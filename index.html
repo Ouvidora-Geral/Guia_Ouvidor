@@ -1,989 +1,1055 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Guia do Ouvidor — Minuta do Manual Nacional das Ouvidorias</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet"/>
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      --primary:#0e2a57;
-      --secondary:#1f4788;
-      --surface:#0c1830;
-      --panel:#132542;
-      --ink:#e6edff;
-      --muted:#a7b5d8;
-      --text-secondary:#c6d4ff;
-      --accent:#00c2ff;
-      --accent-light:#7de0ff;
-      --gold:#ffd166;
-      --success:#10b981;
-      --warn:#f59e0b;
-      --danger:#ef4444;
-      --shadow:0 18px 55px rgba(0,0,0,.55);
-      background:
-        radial-gradient(1200px 800px at 10% -10%, rgba(0,194,255,.10), transparent 55%),
-        radial-gradient(1200px 800px at 110% 110%, rgba(255,209,102,.10), transparent 55%),
-        linear-gradient(160deg,#071124 0%,#0b1730 60%,#0a1735 100%);
-      color:var(--ink);
-      font-family:'Nunito Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      line-height:1.7;
-      letter-spacing:.2px;
-      min-height:100vh;
-      padding:18px;
-      overflow-x:hidden;
-    }
-    .container{
-      max-width:1400px;margin:auto;background:rgba(10,19,42,.75);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:24px;box-shadow:var(--shadow);backdrop-filter:blur(10px);overflow:hidden;position:relative
-    }
-    .container:before{
-      content:"";position:absolute;inset:0;pointer-events:none;
-      background:linear-gradient(135deg,rgba(0,194,255,.06),rgba(255,209,102,.06));
-    }
-    header.page{
-      position:relative;overflow:hidden;text-align:center;padding:36px 24px;
-      background:linear-gradient(135deg,rgba(14,42,87,.9),rgba(31,71,136,.85));
-      border-bottom:1px solid rgba(255,255,255,.08)
-    }
-    header.page h1{
-      font-family:'Orbitron',sans-serif;font-weight:900;letter-spacing:1.2px;
-      font-size:3rem;line-height:1.1;margin-bottom:10px;
-      text-shadow:0 0 22px rgba(0,194,255,.85),0 8px 30px rgba(0,0,0,.35)
-    }
-    header.page .subtitle{opacity:.92;max-width:820px;margin:0 auto 8px}
-    .chip{
-      display:inline-block;padding:6px 14px;border-radius:999px;font-weight:800;
-      font-family:'Orbitron',sans-serif;letter-spacing:.5px;color:#0a1022;
-      background:linear-gradient(45deg,var(--gold),#ffbf3b);box-shadow:0 0 18px rgba(255,209,102,.55)
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minuta do Manual – Ouvidoria</title>
 
-    /* NAV TABS */
-    .tabs{
-      display:flex;gap:0;flex-wrap:wrap;backdrop-filter:blur(6px);
-      background:linear-gradient(0deg,rgba(19,37,66,.55),rgba(19,37,66,.35));
-      border-bottom:1px solid rgba(255,255,255,.06)
-    }
-    .tab-btn{
-      appearance:none;border:0;background:transparent;color:#c6d4ff;
-      font-family:'Orbitron',sans-serif;font-weight:800;letter-spacing:.6px;
-      padding:18px 22px;cursor:pointer;flex:1 1 240px;position:relative;
-      transition:transform .35s cubic-bezier(.2,.9,.2,1),color .25s;
-      min-width:220px
-    }
-    .tab-btn:before{
-      content:"";position:absolute;inset:8px 8px -1px 8px;border-radius:14px 14px 0 0;
-      background:linear-gradient(45deg,rgba(0,194,255,.12),rgba(255,209,102,.08));
-      opacity:0;transition:opacity .35s
-    }
-    .tab-btn:after{
-      content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);
-      width:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--accent));
-      transition:width .35s cubic-bezier(.2,.9,.2,1)
-    }
-    .tab-btn:hover{color:#fff;transform:translateY(-3px)}
-    .tab-btn:hover:before{opacity:1}
-    .tab-btn.active{color:#fff}
-    .tab-btn.active:after{width:82%}
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    .tab-content{display:none;padding:28px;min-height:560px}
-    .tab-content.active{display:block;animation:fadeInUp .7s cubic-bezier(.2,.9,.2,1)}
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+<style>
+:root{
+  --fundo:#0f172a;
+  --fundo-2:#0e1530;
+  --cont-fundo:#2A2A61;             /* fundo para textos */
+  --card:#1a2444;
+  --acento:#00ffe7;
+  --acento-2:#00e1ff;
+  --texto:#ffffff;
+  --texto-2:#d7e4ff;
+  --borda:rgba(255,255,255,.12);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;background:linear-gradient(135deg,var(--fundo) 0%,#16213E 100%);
+  color:var(--texto);font-family:"Nunito Sans",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+  line-height:1.55;
+}
+a{color:#fff}
 
-    /* SUB-TABS */
-    .chapter-tabs{
-      display:flex;gap:12px;flex-wrap:wrap;margin:6px 0 22px;padding:16px;
-      background:rgba(19,37,66,.45);border:1px solid rgba(255,255,255,.06);
-      border-radius:18px;overflow:auto;scrollbar-width:thin;scrollbar-color:var(--accent) transparent
-    }
-    .chapter-tab{
-      padding:12px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.10);
-      background:rgba(31,71,136,.25);color:#dfe8ff;font-weight:800;font-family:'Orbitron',sans-serif;
-      cursor:pointer;transition:transform .35s,color .25s,background .35s;white-space:nowrap
-    }
-    .chapter-tab:hover{transform:translateY(-2px);background:rgba(0,194,255,.18);color:#fff}
-    .chapter-tab.active{
-      background:linear-gradient(45deg,var(--secondary),var(--primary));border-color:rgba(0,194,255,.6);
-      box-shadow:0 10px 28px rgba(0,194,255,.25);color:#fff
-    }
-    .chapter-content{display:none}
-    .chapter-content.active{display:block;animation:fadeInUp .6s cubic-bezier(.2,.9,.2,1)}
+/* Shell */
+.app{max-width:1200px;margin:0 auto;padding:20px}
+.header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.header .title{font-family:"Orbitron",sans-serif;font-weight:800;font-size:1.25rem}
+.progress{height:4px;background:#24324d;border-radius:999px;overflow:hidden;margin:6px 0 18px}
+.progress>span{display:block;width:58%;height:100%;background:linear-gradient(90deg,#ffd34d,#67e8f9)}
 
-    /* Painéis de leitura com fundo #2A2A61 */
-    .capitulos-wrapper .chapter-content,
-    .capitulos-wrapper .section-content,
-    .anexos-wrapper .chapter-content{
-      display:block;background:#2A2A61;border:1px solid rgba(255,255,255,.10);
-      border-radius:18px;padding:20px;margin-bottom:18px;color:#EAF2FF;
-    }
-    .capitulos-wrapper h4,
-    .anexos-wrapper h4{font-family:'Orbitron',sans-serif;margin-bottom:10px;color:#fff}
+/* Tabs */
+.tabbar{display:flex;gap:14px;flex-wrap:wrap;background:rgba(255,255,255,.03);
+  border:1px solid var(--borda);padding:10px;border-radius:16px}
+.tabbar button{
+  border-radius:999px;border:1px solid rgba(0,255,231,.35);
+  background:rgba(255,255,255,.06);color:#c9f7ff;padding:11px 18px;
+  font-family:"Orbitron",sans-serif;cursor:pointer;transition:.25s
+}
+.tabbar button.active{box-shadow:0 0 0 2px rgba(0,225,255,.28);color:#fff}
 
-    /* Cards utilitários */
-    .method-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px}
-    .method-card{background:#0f1b36;border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:16px;box-shadow:0 10px 22px rgba(0,0,0,.20)}
-    .method-card h3{font-family:'Orbitron',sans-serif;margin-bottom:8px;color:var(--accent)}
-    .method-card p{color:#dfe8ff}
-    .highlight{background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);border-radius:14px;padding:16px;margin:12px 0}
+/* Blocks / containers */
+.tabcontent{display:none;animation:fade .25s ease}
+.tabcontent.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-    /* Accordions base */
-    .study-section{background:#f8f9fa;color:#0d1b2a;border-radius:22px;padding:26px;border:1px solid rgba(0,0,0,.06);box-shadow:0 10px 26px rgba(0,0,0,.06);position:relative;overflow:hidden;margin-bottom:22px}
-    .study-section:hover{box-shadow:0 16px 36px rgba(0,194,255,.15)}
-    .study-section:after{content:"";position:absolute;left:0;top:0;width:5px;height:100%;background:linear-gradient(180deg,var(--accent),#7de0ff)}
-    .section-header{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;border-radius:14px;cursor:pointer;background:rgba(26,58,108,.10);border:1px solid rgba(0,0,0,.06);transition:transform .25s,background .25s}
-    .section-header:hover{transform:scale(1.01);background:rgba(0,194,255,.08)}
-    .section-header h2{font-family:'Orbitron',sans-serif;color:#0a2a53;font-size:1.35rem;display:flex;gap:10px;align-items:center}
-    .section-header h2 i{color:var(--accent);text-shadow:0 0 10px var(--accent)}
-    .section-content{display:none;padding-top:18px;border-top:1px dashed rgba(0,0,0,.08)}
-    .section-content.active{display:block;animation:expand .45s ease}
-    @keyframes expand{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.block{
+  background:var(--cont-fundo);border-radius:18px;padding:20px;margin:16px 0;
+  border:1px solid var(--borda)
+}
+.block h3,.block h4{margin:0 0 8px 0;font-family:"Orbitron",sans-serif}
 
-    /* Lista de legislação (estilo já existente) */
-    .legislation-list{background:#fff;border-radius:18px;padding:22px;border:1px solid rgba(0,0,0,.06)}
-    .legislation-item{display:flex;gap:14px;align-items:flex-start;padding:14px;border-radius:12px;transition:transform .2s,background .2s;border:1px solid rgba(0,0,0,.04);margin-bottom:10px}
-    .legislation-item:last-child{margin-bottom:0}
-    .legislation-item:hover{transform:translateX(4px);background:rgba(0,194,255,.06)}
-    .legislation-item i{color:var(--accent);margin-top:4px}
-    .legislation-item a{color:#0f4d8a;font-weight:800;font-family:'Orbitron',sans-serif;text-decoration:none}
-    .legislation-item a:hover{text-decoration:underline}
+/* CAPÍTULOS */
+.capitulos-wrapper .chapter-content{margin:16px 0}
+.capitulos-wrapper h4{font-family:"Orbitron",sans-serif;margin:0 0 10px}
+.capitulos-wrapper p{margin:6px 0}
 
-    /* QUIZ */
-    .quiz-shell{display:grid;gap:20px;grid-template-columns: 1fr;max-width:980px;margin:auto}
-    .quiz-intro,.quiz-container,.results{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.10);border-radius:20px;padding:22px;box-shadow:0 12px 28px rgba(0,0,0,.25)}
-    .difficulty-selector{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:10px}
-    .level-btn{border:1px solid rgba(255,255,255,.18);background:linear-gradient(45deg,rgba(31,71,136,.6),rgba(0,194,255,.18));color:#fff;padding:14px 18px;border-radius:14px;font-weight:800;font-family:'Orbitron',sans-serif;letter-spacing:.5px;cursor:pointer;transition:transform .25s,box-shadow .25s}
-    .level-btn:hover{transform:translateY(-2px);box-shadow:0 14px 24px rgba(0,194,255,.25)}
-    .quiz-header{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px}
-    .badges{display:flex;gap:10px;align-items:center}
-    .badge{background: rgba(0,194,255,.15);border:1px solid rgba(0,194,255,.35);color:#dff6ff;padding:6px 10px;border-radius:999px;font-family:'Orbitron',sans-serif;font-size:.85rem;font-weight:800}
-    .progress-wrap{height:10px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
-    .progress{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--accent))}
-    .question-header{font-family:'Orbitron',sans-serif;font-size:1.2rem;margin:10px 0 14px}
-    .options{display:grid;gap:12px}
-    .option{
-      padding:16px 18px;border-radius:16px;border:2px solid rgba(255,255,255,.16);
-      background:rgba(255,255,255,.06);cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s;
-      color:#fff; /* texto branco nas alternativas */
-    }
-    .option:hover{transform:translateX(4px);box-shadow:0 10px 18px rgba(0,0,0,.20);border-color:rgba(0,194,255,.55)}
-    .navigation{display:flex;gap:12px;justify-content:space-between;align-items:center;margin-top:16px}
-    .nav-btn{border:0;background:linear-gradient(45deg,var(--gold),#ffbf3b);color:#0a1022;font-weight:900;font-family:'Orbitron',sans-serif;padding:12px 18px;border-radius:14px;cursor:pointer;box-shadow:0 12px 22px rgba(255,209,102,.25);transition:transform .2s}
-    .nav-btn:disabled{opacity:.5;cursor:not-allowed}
-    .nav-btn:hover{transform:translateY(-2px)}
-    .option.correct{border-color:#10b981;background:rgba(16,185,129,.15);color:#fff}
-    .option.wrong{border-color:#ef4444;background:rgba(239,68,68,.15);color:#fff}
-    .option.disabled{pointer-events:none;opacity:.85}
+/* GRIDS/HELPERS */
+.method-grid,.status-grid{display:grid;gap:14px}
+.method-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.status-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.method-card,.status-card{
+  background:rgba(0,0,0,.18);border:1px solid var(--borda);border-radius:14px;padding:14px
+}
+.highlight{background:rgba(255,255,255,.08);border:1px solid var(--borda);border-radius:12px;padding:14px}
 
-    /* PodeOuvir! (mantido) */
-    .pode-ouvir-container{padding: 40px; text-align: center; position: relative; z-index: 5;
-      background: rgba(22, 33, 62, 0.3); border-radius: 20px; backdrop-filter: blur(10px);
-      border: 1px solid rgba(0, 255, 231, 0.2); box-shadow: 0 10px 40px rgba(0, 255, 231, 0.2);}
-    .pode-ouvir-container header h1{font-size: 3.5rem; font-weight: 900; color: #00ffe7; font-family: 'Orbitron', sans-serif;
-      text-shadow: 0 0 20px #00ffe7, 0 0 40px #00e1ff, 0 0 60px rgba(0, 225, 255, 0.6);
-      transform: perspective(800px) rotateX(5deg) scale(1); animation: pulse 3s infinite alternate;
-      letter-spacing: 2px; position: relative; margin-bottom: 30px;}
-    .pode-ouvir-container header h1 .icon-volume{display:inline-block; animation: colorChange 4s infinite alternate;}
-    .pode-ouvir-container nav{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin:30px 0 25px;padding:0 20px;perspective:1000px;z-index:10}
-    .pode-ouvir-container nav button{
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 255, 231, 0.1));
-      border: 1px solid rgba(0, 255, 231, 0.3);
-      padding: 12px 20px; border-radius: 50px; font-size: 1rem; color: #00ffe7; cursor: pointer;
-      transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275); backdrop-filter: blur(10px);
-      box-shadow: 0 5px 15px rgba(0, 255, 231, 0.2); flex: 1 1 160px; min-width: 140px;
-      font-family: 'Orbitron', sans-serif; letter-spacing: .5px; position: relative; transform-style: preserve-3d; transform: translateZ(0);}
-    .pode-ouvir-container nav button:hover{transform:translateY(-5px) scale(1.05);box-shadow:0 8px 20px rgba(0,255,231,.4);background: linear-gradient(135deg, rgba(255,255,255,.15), rgba(0,255,231,.2));}
-    .podcast-tab-content{display:none; animation: fadeInUp .8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; width:100%; max-width:600px; margin:0 auto 40px; padding:0 20px;}
-    .podcast-tab-content.active{display:block}
-    .player{background: rgba(22, 33, 62, 0.7); padding: 30px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,255,231,.3), 0 0 15px rgba(0,255,231,.5);
-      backdrop-filter: blur(15px); transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid rgba(0, 255, 231, 0.2); position: relative; overflow: hidden;}
-    .player h2{margin-bottom:20px;font-size:1.5rem;color:#00e1ff;font-family:'Orbitron',sans-serif;text-shadow:0 0 10px #00ffe7;display:flex;align-items:center;justify-content:center;gap:10px}
-    .player audio{width:100%;max-width:450px;outline:none;filter: drop-shadow(0 0 10px #00ffe7);transform: scale(1); transition: transform .3s ease; background: rgba(0,0,0,.3); padding:12px; border-radius:12px; margin-top:15px}
-    .player audio:hover{transform: scale(1.02)}
-    .player p{color:#b0c4de;font-size:1rem;margin-top:15px}
-    .pode-ouvir-container footer{margin-top:30px;padding:20px;font-size:.9rem;color:#b0c4de;font-family:'Exo 2', sans-serif;z-index:10;border-top:1px solid rgba(0,255,231,.2)}
-    @keyframes pulse{0%{text-shadow:0 0 20px #00ffe7,0 0 40px #00e1ff,0 0 60px rgba(0,225,255,.6);transform:perspective(800px) rotateX(5deg) scale(1)}100%{text-shadow:0 0 25px #00ffe7,0 0 50px #00e1ff,0 0 70px rgba(0,225,255,.8);transform:perspective(800px) rotateX(5deg) scale(1.03)}}
-    @keyframes colorChange{0%{color:#3b82f6;text-shadow:0 0 20px #3b82f6,0 0 40px rgba(59,130,246,.7)}50%{color:#00ffe7;text-shadow:0 0 20px #00ffe7,0 0 40px rgba(0,255,231,.7)}100%{color:#00ffaa;text-shadow:0 0 20px #00ffaa,0 0 40px rgba(0,255,170,.7)}}
+/* INTERATIVO – Fluxo */
+.interactive-diagram{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 14px}
+.flow-step{
+  padding:10px 14px;border-radius:999px;border:1px solid rgba(0,255,231,.30);
+  background:rgba(255,255,255,.06);cursor:pointer
+}
+.flow-step.active{box-shadow:0 0 0 2px rgba(0,225,255,.35)}
 
-    /* Responsive */
-    @media (max-width:920px){header.page h1{font-size:2.4rem}.tab-btn{min-width:180px}}
-    @media (max-width:768px){
-      .pode-ouvir-container{padding:20px}
-      .pode-ouvir-container header h1{font-size:2.5rem}
-      .pode-ouvir-container nav{flex-direction:column;gap:12px}
-      .pode-ouvir-container nav button{width:100%;padding:10px 15px;font-size:.95rem}
-      .player{padding:20px}
-      .player h2{font-size:1.3rem}
-    }
-    @media (max-width:640px){.tab-btn{flex:1 1 100%}}
-    @media (max-width:480px){
-      .pode-ouvir-container header h1{font-size:2rem}
-      .player{padding:15px}
-      .player h2{font-size:1.1rem}
-    }
-  </style>
+/* TIMELINE */
+.timeline{display:grid;gap:12px}
+.timeline-item{border-left:3px solid var(--acento-2);padding-left:12px}
+.timeline-content{background:rgba(0,0,0,.18);border:1px solid var(--borda);border-radius:12px;padding:12px}
+
+/* ========== QUIZ ========== */
+.quiz .question{margin:10px 0 6px}
+.quiz .answers{display:grid;gap:10px;margin-top:10px}
+.quiz .answers button{
+  width:100%;text-align:center;padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.08);cursor:pointer;transition:.2s;
+  color:#fff !important;font-weight:800
+}
+.quiz .answers button:hover{transform:translateY(-1px)}
+.quiz .answers button.correct{border-color:#22c55e !important;box-shadow:0 0 0 2px rgba(34,197,94,.35)}
+.quiz .answers button.wrong{border-color:#ef4444 !important;box-shadow:0 0 0 2px rgba(239,68,68,.35)}
+.quiz .answers button:disabled{opacity:.95;cursor:not-allowed}
+
+/* ========== LEGISLAÇÕES ========== */
+#leg-tools{display:flex;gap:10px;align-items:center;margin:6px 0 10px}
+#leg-search{
+  flex:1;padding:10px 14px;border-radius:999px;border:1px solid rgba(0,255,231,.35);
+  background:rgba(255,255,255,.06);color:#fff;outline:none
+}
+#leg-index{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+#leg-index .chip{
+  padding:8px 12px;border-radius:999px;border:1px solid rgba(0,255,231,.35);
+  background:rgba(255,255,255,.06);color:var(--acento);text-decoration:none;font-size:.9rem
+}
+.leg-title,.leg-year-title{
+  cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;
+  font-family:'Orbitron',sans-serif
+}
+.leg-title{font-size:1.25rem;margin:12px 0 8px}
+.leg-year-title{font-size:1.05rem;margin:8px 0}
+.leg-body,.leg-year-body{background:var(--cont-fundo);border-radius:14px;padding:10px;border:1px solid var(--borda)}
+.legislation-item{
+  display:flex;gap:14px;padding:11px 10px;margin:8px 0;
+  border:1px solid var(--borda);border-radius:12px;background:rgba(0,0,0,.18)
+}
+.legislation-item h3{margin:0 0 4px}
+.legislation-item h3 a{color:#fff;text-decoration:none}
+.legislation-item p{color:var(--texto-2);margin:0}
+.collapsed{display:none}
+
+footer{opacity:.75;font-size:.9rem;margin:24px 0 8px}
+
+/* responsivo */
+@media (max-width:640px){
+  .tabbar{gap:10px}
+  .tabbar button{padding:10px 14px}
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <header class="page">
-      <h1><i class="fas fa-headset"></i> GUIA DO OUVIDOR</h1>
-      <p class="subtitle"><strong>MINUTA DO MANUAL NACIONAL DAS OUVIDORIAS</strong></p>
-      <p><span class="chip">UTILIZAÇÃO SOMENTE PARA CONSULTA</span></p>
-    </header>
+<div class="app">
 
-    <!-- NAV TABS -->
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="study"><i class="fas fa-book"></i> Minuta do Manual</button>
-      <button class="tab-btn" data-tab="quiz"><i class="fas fa-question-circle"></i> Quiz</button>
-      <button class="tab-btn" data-tab="pode-ouvir"><i class="fas fa-volume-up"></i> PodeOuvir!</button>
-    </div>
+  <div class="header"><i class="fa-solid fa-book-open"></i><span class="title">Minuta do Manual</span></div>
+  <div class="progress"><span></span></div>
 
-    <!-- TAB: MINUTA DO MANUAL -->
-    <section class="tab-content active" id="study-tab">
-      <!-- Sub-abas -->
-      <div class="chapter-tabs">
-        <button class="chapter-tab active" data-chapter="capitulos">Capítulos</button>
-        <button class="chapter-tab" data-chapter="anexos">Anexos</button>
-        <button class="chapter-tab" data-chapter="legislacoes">Legislações</button>
-      </div>
-
-      <!-- Conteúdos (resumidos para foco — já existentes na sua versão) -->
-      <div class="chapter-content active" id="capitulos">
-        <div class="capitulos-wrapper">
-          <div class="chapter-content active" id="capitulo1">
-            <h4>CAPÍTULO I - DISPOSIÇÕES GERAIS</h4>
-            <p>Conteúdo mantido…</p>
-          </div>
-          <!-- ... demais capítulos mantidos ... -->
-        </div>
-      </div>
-
-      <div class="chapter-content" id="anexos">
-        <div class="anexos-wrapper">
-          <div class="chapter-content">
-            <h4>Anexo I</h4>
-            <p>Conteúdo mantido…</p>
-          </div>
-          <div class="chapter-content">
-            <h4>Anexo II</h4>
-            <p>Conteúdo completo inserido anteriormente…</p>
-          </div>
-          <div class="chapter-content">
-            <h4>Anexo III</h4>
-            <p>Conteúdo completo inserido anteriormente…</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- >>> SUBSTITUIÇÃO: LEGISLAÇÕES (exatamente como você enviou) -->
-      <div class="chapter-content" id="legislacoes">
-        <div class="study-section"> 
-          <div class="section-header" onclick="toggleSection('legislacao')">
-              <h2><i class="fas fa-gavel"></i> Legislação Relevante</h2>
-              <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="section-content" id="legislacao-content">
-              <div class="legislation-list">
-
-                  <h3>Leis</h3>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank">Lei nº 13.709/2018 (LGPD)</a></h3>
-                          <p>Lei Geral de Proteção de Dados Pessoais</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13460.htm" target="_blank">Lei nº 13.460/2017</a></h3>
-                          <p>Dispõe sobre participação, proteção e defesa dos direitos do usuário dos serviços públicos</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm" target="_blank">Lei nº 12.527/2011 (LAI)</a></h3>
-                          <p>Lei de Acesso à Informação</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/lei-n-749886-de-25-de-junho-de-1986/" target="_blank">LEI N 7.498/86, DE 25 DE JUNHO DE 1986 – ALTERADA PELAS LEIS NºS 14.434/2022 E 14.602/2023</a></h3>
-                          <p>Dispõe sobre a regulamentação do exercício da Enfermagem e dá outras providências.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="http://www.planalto.gov.br/ccivil_03/leis/l5905.htm" target="_blank">Lei nº 5.905/1973</a></h3>
-                          <p>Cria os Conselhos Federal e Regionais de Enfermagem</p>
-                      </div>
-                  </div>
-
-                  <h3>Decretos</h3>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/decreto/d9492.htm" target="_blank">Decreto nº 9.492/2018</a></h3>
-                          <p>Regulamenta a Lei nº 13.460/2017 sobre Ouvidorias</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/decreto-n-9440687/" target="_blank">DECRETO N 94.406/87</a></h3>
-                          <p>Regulamenta a Lei nº 7.498, de 25 de junho de 1986, que dispõe sobre o exercício da Enfermagem, e dá outras providências</p>
-                      </div>
-                  </div>
-
-                  <h3>Resoluções</h3>
-                  <h4>2025</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-788-de-21-de-agosto-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 788 DE 21 DE AGOSTO DE 2025</a></h3>
-                          <p>Regulamenta o uso terapêutico dos concentrados sanguíneos autólogos no âmbito da enfermagem.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-787-de-21-de-agosto-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 787 DE 21 DE AGOSTO DE 2025</a></h3>
-                          <p>Regulamenta a atuação da equipe de enfermagem na promoção, prevenção, tratamento e reabilitação de pessoas com Lesões Cutâneas.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-786-de-07-de-agosto-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 786 DE 07 DE AGOSTO DE 2025</a></h3>
-                          <p>Altera o Anexo II da Resolução Cofen nº 737, de 2 de fevereiro de 2024, que normatiza a atuação do Enfermeiro Obstétrico e Obstetriz na assistência à mulher no Parto Domiciliar Planejado.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-785-de-04-de-agosto-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 785 DE 04 DE AGOSTO DE 2025</a></h3>
-                          <p>Dispõe sobre a divulgação, no Portal da Transparência, de informações referentes a convênios, termos de parceria, termos de fomento, termos de colaboração, acordos de cooperação e outros instrumentos congêneres.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-no-784-de-30-de-julho-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 784/2025</a></h3>
-                          <p>Altera o prazo de vigência da Resolução Cofen nº 782, que institui os procedimentos para concessão, renovação e cancelamento do registro da Anotação de Responsabilidade Técnica de Enfermagem.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-no-782-de-02-de-julho-de-2025/" target="_blank">RESOLUÇÃO COFEN Nº 782/2025</a></h3>
-                          <p>Institui os procedimentos necessários para concessão, renovação e cancelamento do registro da Anotação de Responsabilidade Técnica de Enfermagem e define as atribuições do Enfermeiro Responsável Técnico.</p>
-                      </div>
-                  </div>
-                  <h4>2024</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-no-736-de-17-de-janeiro-de-2024/" target="_blank">RESOLUÇÃO COFEN Nº 736/2024</a></h3>
-                          <p>Dispõe sobre a implementação do Processo de Enfermagem em todo contexto socioambiental onde ocorre o cuidado de enfermagem.</p>
-                      </div>
-                  </div>
-                  <h4>2023</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-723-2023/" target="_blank">RESOLUÇÃO COFEN Nº 723/2023</a></h3>
-                          <p>Normatiza a atuação do enfermeiro na execução do procedimento de descompressão torácica por agulha e outros procedimentos, em pacientes com agravos torácicos em risco de morte, no atendimento pré-hospitalar móvel.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-722-2023/" target="_blank">RESOLUÇÃO COFEN Nº 722/2023</a></h3>
-                          <p>Normatiza e estabelece critérios aos profissionais de enfermagem que integram as equipes de Atendimento Pré-hospitalar, para atuação em áreas de risco e/ou de difícil acesso.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-720-2023-alterada-pela-resolucao-cofen-n-721-2023/" target="_blank">RESOLUÇÃO COFEN Nº 720/2023 – ALTERADA PELA RESOLUÇÃO COFEN Nº 721/2023</a></h3>
-                          <p>Normatiza a atuação do Enfermeiro em Auditoria.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-718-2023/" target="_blank">RESOLUÇÃO COFEN Nº 718/2023</a></h3>
-                          <p>Altera o Anexo da Resolução Cofen nº 688, de 04 de fevereiro de 2022, que normatiza a implementação de diretrizes assistenciais e a administração de medicamentos para a equipe de enfermagem que atua na modalidade Suporte Básico de Vida e reconhece o Suporte Intermediário de Vida em serviços públicos e privados.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-721-2023/" target="_blank">RESOLUÇÃO COFEN Nº 721/2023</a></h3>
-                          <p>Atualiza a norma técnica para Registro de Empresa no âmbito do Conselho Federal de Enfermagem.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-715-2023/" target="_blank">RESOLUÇÃO COFEN Nº 715/2023</a></h3>
-                          <p>Altera a Resolução Cofen nº 529, de 9 de novembro de 2016, que trata da atuação do Enfermeiro na área da Estética, e dá outras providências.</p>
-                      </div>
-                  </div>
-                  <h4>2022</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-713-2022/" target="_blank">RESOLUÇÃO COFEN Nº 713/2022</a></h3>
-                          <p>Atualiza a norma de atuação dos profissionais de enfermagem no Atendimento Pré-hospitalar (APH) móvel Terrestre e Aquaviário, quer seja na assistência direta, no gerenciamento e/ou na Central de Regulação das Urgências (CRU), em serviços públicos e privados, civis e militares.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-709-2022/" target="_blank">RESOLUÇÃO COFEN Nº 709/2022</a></h3>
-                          <p>Atualiza a Norma Técnica que dispõe sobre a Atuação do Enfermeiro e Técnico de Enfermagem em Hemoterapia.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-705-2022/" target="_blank">RESOLUÇÃO COFEN Nº 705/2022</a></h3>
-                          <p>Atualiza, no âmbito do Sistema Cofen/Conselhos Regionais de Enfermagem, a atuação dos Profissionais de Enfermagem nos cuidados em traumato-ortopedia e procedimentos de imobilização.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-696-2022-alterada-pela-resolucao-cofen-n-707-2022-e-713-2023/" target="_blank">RESOLUÇÃO COFEN Nº 696/2022 – ALTERADA PELA RESOLUÇÃO COFEN Nº 707/2022 E 713/2023</a></h3>
-                          <p>Dispõe sobre a atuação da Enfermagem na Saúde Digital, normatizando a Telenfermagem.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-688-2022-alterada-pela-resolucao-cofen-n-718-2023/" target="_blank">RESOLUÇÃO COFEN Nº 688/2022 – ALTERADA PELA RESOLUÇÃO COFEN Nº 718/2023</a></h3>
-                          <p>Normatiza a implementação de diretrizes assistenciais e a administração de medicamentos para a equipe de enfermagem que atua na modalidade Suporte Básico de Vida e reconhece o Suporte Intermediário de Vida em serviços públicos e privados.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-710-2022/" target="_blank">RESOLUÇÃO COFEN Nº 710/2022</a></h3>
-                          <p>Atualiza a norma técnica referente à atuação da Equipe de Enfermagem no processo de doação, captação e transplante de órgãos, tecidos e células, e dá outras providências.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-706-2022-prorrogada-pela-resolucao-cofen-n-714-2022-alterada-pela-resolucao-cofen-n-758-2024/" target="_blank">RESOLUÇÃO COFEN Nº 706/2022 – PRORROGADA PELA RESOLUÇÃO COFEN Nº 714/2022 – ALTERADA PELA RESOLUÇÃO COFEN Nº 758/2024</a></h3>
-                          <p>Aprova o Código de Processo Ético do Sistema Cofen/Conselhos Regionais de Enfermagem.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-698-2022-revogada-pela-resolucao-cofen-n-721-2023/" target="_blank">RESOLUÇÃO COFEN Nº 698/2022 – REVOGADA PELA RESOLUÇÃO COFEN Nº 721/2023</a></h3>
-                          <p>Altera e atualiza o Organograma e o Caderno de Atribuições, cria e extingue cargos e funções, e dá outras providências.</p>
-                      </div>
-                  </div>
-                  <h4>2021</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-660-2021/" target="_blank">RESOLUÇÃO COFEN Nº 660/2021</a></h3>
-                          <p>Altera a Resolução Cofen 656, de 17 de dezembro de 2020, que normatiza a atuação do enfermeiro na assistência direta e no gerenciamento do Atendimento Pré-Hospitalar Móvel e Inter-hospitalar em veículo aéreo.</p>
-                      </div>
-                  </div>
-                  <h4>2020</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-626-2020/" target="_blank">RESOLUÇÃO COFEN Nº 626/2020</a></h3>
-                          <p>Altera a Resolução Cofen nº 529, de 9 de novembro de 2016, que trata da atuação do Enfermeiro na área da Estética, e dá outras providências.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-656-2020-alterada-pela-resolucao-cofen-n-660-2021/" target="_blank">RESOLUÇÃO COFEN Nº 656/2020 – ALTERADA PELA RESOLUÇÃO COFEN Nº 660/2021</a></h3>
-                          <p>Normatiza a atuação do enfermeiro na assistência direta e no gerenciamento do Atendimento Pré-Hospitalar Móvel e Inter-hospitalar em veículo aéreo.</p>
-                      </div>
-                  </div>
-                  <h4>2018</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-n-581-2018-alterada-pela-resolucao-cofen-n-625-2020-e-decisoes-cofen-ns-065-2021-20-2021-263-2023-e-264-2023/" target="_blank">RESOLUÇÃO COFEN Nº 581/2018 – ALTERADA PELA RESOLUÇÃO COFEN Nº 625/2020 E DECISÕES COFEN NºS 065/2021, 20/2021, 263/2023 E 264/2023</a></h3>
-                          <p>Atualiza, no âmbito do Sistema Cofen/Conselhos Regionais de Enfermagem, os procedimentos para Registro de Títulos de Pós-Graduação Lato e Stricto Sensu concedido a Enfermeiros e aprova a lista das especialidades.</p>
-                      </div>
-                  </div>
-                  <h4>2003</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/resolucao-cofen-278-2003/" target="_blank">RESOLUÇÃO COFEN-278/2003</a></h3>
-                          <p>Dispõe sobre sutura efetuada por Profissional de Enfermagem.</p>
-                      </div>
-                  </div>
-
-                  <h3>Pareceres</h3>
-                  <h4>2025</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-n-262025camaras-tecnicas-de-enfermagem/" target="_blank">PARECER Nº 26/2025/CÂMARAS TÉCNICAS DE ENFERMAGEM</a></h3>
-                          <p>Parecer Técnico sobre a possibilidade de atuação do enfermeiro como anestesista no Brasil, com base em modelos internacionais e diante da escassez de médicos anestesiologistas. A proposta envolve a criação de programas de especialização e demanda análise quanto à legalidade, viabilidade educacional, segurança do paciente e impactos no sistema de saúde.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-n-282025camaras-tecnicas-de-enfermagem/" target="_blank">PARECER Nº 28/2025/CÂMARAS TÉCNICAS DE ENFERMAGEM</a></h3>
-                          <p>Parecer Técnico sobre as evidências científicas sobre o uso do Botão Anestésico e outras formas de analgesia na inserção do Dispositivo Intrauterino (DIU). Revisão das técnicas anestésicas utilizadas, incluindo bloqueio paracervical e lidocaína tópica, bem como seus efeitos na redução da dor, sucesso da inserção e satisfação das pacientes. Recomendação baseada na melhor evidência disponível, com orientação para individualização da analgesia conforme a necessidade e preferência da paciente.</p>
-                      </div>
-                  </div>
-                  <h4>2024</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-no-16-2024-cofen-camtec-ctlnenf/" target="_blank">PARECER Nº 16/2024/COFEN/CAMTEC/CTLNENF</a></h3>
-                          <p>Parecer técnico sobre o enquadramento do SESMT como programa de saúde e a obrigatoriedade de supervisão de técnicos de enfermagem por enfermeiros.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-normativo-no-1-2024-cofen/" target="_blank">PARECER NORMATIVO Nº 1/2024/COFEN</a></h3>
-                          <p>Fornece parâmetros para o planejamento da força de trabalho de enfermagem.</p>
-                      </div>
-                  </div>
-                  <h4>2023</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-no-29-2023-ctep-cofen/" target="_blank">PARECER DE CAMARA TECNICA No. 29/2023/CTEP/COFEN</a></h3>
-                          <p>Registro de Título de Especialista em Estética avançada com ênfase em Harmonização Facial.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-74-2023-plen-cofen/" target="_blank">PARECER DE CONSELHEIRO FEDERAL No. 74/2023/PLEN/COFEN</a></h3>
-                          <p>ATUAÇÃO DO ENFERMEIRO EM TRICOLOGIA.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-no-6-2023-ctep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA No. 6/2023/CTEP/COFEN</a></h3>
-                          <p>Título de Pós-graduação Lato Sensu em “Estética Invasiva: Procedimentos não cirúrgicos”.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-no-13-2023-ctln-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA No. 13/2023/CTLN/COFEN</a></h3>
-                          <p>Estágio de pós-graduação em instituição diferente da que ofertou o conteúdo teórico.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-70-2023-plen-cofen/" target="_blank">PARECER DE CONSELHEIRO FEDERAL No. 70/2023/PLEN/COFEN</a></h3>
-                          <p>Nutrição parenteral domiciliar. Capacitação de familiar e responsável legal pelo Enfermeiro.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-3-2023-proger-dpac-spc-cofen/" target="_blank">PARECER DE CONSELHEIRO FEDERAL No. 3/2023/PROGER/DPAC/SPC/COFEN</a></h3>
-                          <p>Prescrição de medicamentos por Enfermeiro.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-14-2023-ctep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA N. 14/2023/CTEP/COFEN</a></h3>
-                          <p>Registro de Titulo Lato sensu “Terapias Pró-Oxidativas, Ozonioterapia Medicinal e Fisiologia Humana Aplicada”.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-76-2023-plen-cofen/" target="_blank">PARECER DE CONSELHEIRO FEDERAL No. 76/2023/PLEN/COFEN</a></h3>
-                          <p>Transporte intra-hospitalar do paciente crítico em pós-operatório imediato.</p>
-                      </div>
-                  </div>
-                  <h4>2022</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-062-2022-ctep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA Nº 062/2022/CTEP/COFEN</a></h3>
-                          <p>Análise do requerimento de registro do título de especialista em Estética.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-n-022-2022-cofen/" target="_blank">PARECER DE CONSELHEIRO FEDERAL Nº 022/2022/COFEN</a></h3>
-                          <p>Análise acerca da legalidade da capacitação do cuidador familiar leigo pelo Enfermeiro, na assistência específica de aspiração traqueal, no ambiente domiciliar.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0024-2022-ctep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA Nº 0024/2022/CTEP/COFEN</a></h3>
-                          <p>Projeto de Pesquisa para estabelecer o panorama da educação técnica de nível médio (EPTNME) em Enfermagem no Brasil.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-053-2022-ctep-cofen/" target="_blank">Parecer de Câmara Técnica N° 053/2022/CTEP/COFEN</a></h3>
-                          <p>Análise dos Títulos de Pós-graduação lato sensu “Ozonioterapia”.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0056-2022-ctln-ctas-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA Nº 0056/2022/CTLN/CTAS/COFEN</a></h3>
-                          <p>Auxiliar de Enfermagem em Unidades de Hemodiálise.</p>
-                      </div>
-                  </div>
-                  <h4>2021</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0094-2021-ctln-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA Nº 0094/2021/CTLN/COFEN</a></h3>
-                          <p>Realização de procedimento de anestesia local injetável por enfermeiro especialista em podiatria, estomaterapia ou dermatologia.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0112-2021-ctln-dgep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA N° 0112/2021/CTLN/DGEP/COFEN</a></h3>
-                          <p>Necessidade de realizar Dimensionamento de Pessoal no Serviço de Home Care.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0107-2021-ctln-dgep-cofen/" target="_blank">PARECER DE CÂMARA TÉCNICA N° 0107/2021/CTLN/DGEP/COFEN</a></h3>
-                          <p>Atuação e capacitação do Enfermeiro para assumir a Coordenação do Serviço de Controle de Infecção Hospitalar – SCIH.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-de-conselheira-federal-n-333-2021-cofen/" target="_blank">PARECER DE CONSELHEIRA FEDERAL N° 333/2021/COFEN</a></h3>
-                          <p>Competência técnico-científica, ética e legal dos profissionais de enfermagem para atuar em Unidade de Terapia Intensiva.</p>
-                      </div>
-                  </div>
-                  <h4>2020</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/parecer-normativo-n-001-2020-cofen/" target="_blank">PARECER NORMATIVO Nº 001/2020/COFEN</a></h3>
-                          <p>REGULAMENTAÇÃO. OZONIOTERAPIA COMO PRÁTICA DO ENFERMEIRO NO BRASIL.</p>
-                      </div>
-                  </div>
-
-                  <h3>Decisões</h3>
-                  <h4>2023</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/decisao-cofen-n-263-de-15-de-dezembro-de-2023/" target="_blank">DECISÃO COFEN Nº 263/2023</a></h3>
-                          <p>Reconhece a Podiatria Clínica como Especialidade do Enfermeiro e a insere na Área I, Saúde Coletiva; Saúde da Criança e do Adolescente; Saúde do Adulto, do Anexo da Resolução Cofen nº 581/2018.</p>
-                      </div>
-                  </div>
-				  
-                  <h3>Notas Técnicas</h3>
-                  <h4>2025</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/nota-tecnica-no-4-2025-plenario/" target="_blank">NOTA TÉCNICA Nº 4/2025/PLENÁRIO</a></h3>
-                          <p>Esclarecimentos sobre a revogação da Resolução Cofen nº 280/2003.</p>
-                      </div>
-                  </div>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/nota-tecnica-no-1-2025-plenario/" target="_blank">NOTA TÉCNICA Nº 1/2025/PLENÁRIO</a></h3>
-                          <p>Nota Técnica sobre Segurança do Paciente no Atendimento Pré-Hospitalar Móvel (APH): contextos; conceitos; aspectos éticos; gerenciamento de riscos e manejo seguro do paciente.</p>
-                      </div>
-                  </div>
-                  <h4>2024</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/nota-tecnica-no-001-2024-comite-de-operacoes-de-emergencia-em-saude-coes-cofen/" target="_blank">NOTA TÉCNICA Nº 001/2024 – COMITÊ DE OPERAÇÕES DE EMERGÊNCIA EM SAÚDE COES/COFEN</a></h3>
-                          <p>Competências e Atribuições do Enfermeiro para enfrentamento a epidemia de dengue em situação de emergência em saúde pública.</p>
-                      </div>
-                  </div>
-                  <h4>2023</h4>
-                  <div class="legislation-item">
-                      <i class="fas fa-book"></i>
-                      <div>
-                          <h3><a href="https://www.cofen.gov.br/nota-tecnica-cofen-no-001-2023/" target="_blank">NOTA TÉCNICA COFEN Nº 001/2023</a></h3>
-                          <p>Nota Técnica sobre Práticas Avançadas de Enfermagem no Brasil (PAE): contexto; conceitos; ações empreendidas, implementação e regulação.</p>
-                      </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- <<< fim da substituição -->
-    </section>
-
-    <!-- TAB: QUIZ (mantido funcional) -->
-    <section class="tab-content" id="quiz-tab">
-      <div class="quiz-shell">
-        <div class="quiz-intro">
-          <h3 style="font-family:Orbitron, sans-serif;margin-bottom:8px">Quiz — Manual das Ouvidorias</h3>
-          <p>Escolha a dificuldade para começar:</p>
-          <div class="difficulty-selector">
-            <button class="level-btn" data-level="easy">Fácil</button>
-            <button class="level-btn" data-level="medium">Médio</button>
-            <button class="level-btn" data-level="hard">Difícil</button>
-          </div>
-        </div>
-
-        <div class="quiz-container" style="display:none">
-          <div class="quiz-header">
-            <div class="badges">
-              <span class="badge" id="level-badge">Nível</span>
-              <span class="badge"><i class="far fa-clock"></i> <span id="timer">00:00</span></span>
-              <span class="badge"><i class="fas fa-list-ol"></i> <span id="qpos">1/1</span></span>
-            </div>
-            <div class="progress-wrap"><div class="progress" id="progress"></div></div>
-          </div>
-          <div id="question-area">
-            <div class="question-header" id="question-text">Pergunta</div>
-            <div class="options" id="options"></div>
-          </div>
-          <div class="navigation">
-            <button class="nav-btn" id="prev" disabled><i class="fas fa-arrow-left"></i> Voltar</button>
-            <button class="nav-btn" id="next" disabled>Próxima <i class="fas fa-arrow-right"></i></button>
-          </div>
-        </div>
-
-        <div class="results" style="display:none">
-          <div class="final-score">
-            <div class="result-circle"><div class="result-inner"><div class="result-percent" id="percent">0%</div></div></div>
-            <div class="result-stars" id="stars">★ ★ ★</div>
-            <div class="score" id="score">0/0</div>
-          </div>
-          <button class="nav-btn" id="restart"><i class="fas fa-rotate-left"></i> Reiniciar</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB: PodeOuvir! (mantido) -->
-    <section class="tab-content" id="pode-ouvir-tab">
-      <div class="pode-ouvir-container">
-        <header>
-          <h1><span class="icon-volume"><i class="fas fa-volume-up"></i></span> PodeOuvir!</h1>
-        </header>
-
-        <nav>
-          <button onclick="openPodcastTab('episodio1')"><i class="fas fa-microphone-alt"></i> Episódio 1</button>
-          <button onclick="openPodcastTab('episodio2')"><i class="fas fa-microphone-alt"></i> Episódio 2</button>
-          <button onclick="openPodcastTab('episodio3')"><i class="fas fa-microphone-alt"></i> Episódio 3</button>
-        </nav>
-
-        <section id="episodio1" class="podcast-tab-content active">
-          <div class="player">
-            <h2><i class="fas fa-headphones-alt"></i> Novo Manual de Ouvidoria</h2>
-            <audio controls>
-              <source src="https://raw.githubusercontent.com/Ouvidora-Geral/PodeOuvir/main/PodCast_NovoManualOuvidoria.mp3" type="audio/mpeg">
-              Seu navegador não suporta áudio.
-            </audio>
-          </div>
-        </section>
-
-        <section id="episodio2" class="podcast-tab-content">
-          <div class="player">
-            <h2><i class="fas fa-rocket"></i> Episódio Futuro</h2>
-            <p>Em breve... Prepare-se para mais insights!</p>
-          </div>
-        </section>
-
-        <section id="episodio3" class="podcast-tab-content">
-          <div class="player">
-            <h2><i class="fas fa-rocket"></i> Episódio Futuro</h2>
-            <p>Em breve... Prepare-se para mais insights!</p>
-          </div>
-        </section>
-
-        <footer>
-          <p>© 2025 Ouvidoria Geral - PodeOuvir!</p>
-          <p>Desenvolvido por Eduardo Fernando de Souza</p>
-        </footer>
-      </div>
-    </section>
+  <div class="tabbar">
+    <button class="tabbtn active" data-tab="capitulos">Capítulos</button>
+    <button class="tabbtn" data-tab="anexos">Anexos</button>
+    <button class="tabbtn" data-tab="legislacoes">Legislações</button>
   </div>
 
-  <script>
-    /* Tabs principais */
-    const tabBtns=[...document.querySelectorAll('.tab-btn')];
-    const tabs={study:document.getElementById('study-tab'),quiz:document.getElementById('quiz-tab'),"pode-ouvir":document.getElementById('pode-ouvir-tab')};
-    tabBtns.forEach(b=>b.addEventListener('click',()=>{
-      tabBtns.forEach(x=>x.classList.remove('active'));
-      b.classList.add('active');
-      Object.values(tabs).forEach(sec=>sec.classList.remove('active'));
-      tabs[b.dataset.tab].classList.add('active');
-    }));
+  <!-- ===================== CAPÍTULOS ===================== -->
+  <section id="capitulos" class="tabcontent active">
+    <div class="block">
+      <!-- CAPÍTULOS (conteúdo que você enviou) -->
+      <div class="capitulos-wrapper">
 
-    /* Sub-abas (Capítulos / Anexos / Legislações) */
-    const chapBtns=[...document.querySelectorAll('.chapter-tab')];
-    chapBtns.forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        chapBtns.forEach(x=>x.classList.remove('active'));
-        btn.classList.add('active');
-        document.querySelectorAll('.chapter-content').forEach(c=>{
-          if(['capitulos','anexos','legislacoes'].includes(c.id)) c.classList.remove('active');
-        });
-        document.getElementById(btn.dataset.chapter).classList.add('active');
+        <div class="chapter-content active" id="capitulo1">
+          <h4>CAPÍTULO I - DISPOSIÇÕES GERAIS</h4>
+          <p><strong>Art. 1º</strong> Para os fins deste Manual, consideram-se:</p>
+          <p>I. Administração pública: conjunto de órgãos e entidades dos Poderes da União, dos Estados, do Distrito Federal e dos Municípios, incluindo a Advocacia Pública, a Defensoria Pública e os Conselhos de Fiscalização Profissional no exercício de função pública delegada.</p>
+          <p>II. Agente público: pessoa física que exerce, ainda que transitoriamente ou sem remuneração, cargo, emprego ou função pública por eleição, nomeação, designação, contratação ou qualquer outra forma de investidura ou vínculo. No Sistema Cofen/Conselhos Regionais de Enfermagem, são considerados agentes públicos os conselheiros federais e regionais, empregados públicos, ocupantes de cargos comissionados, colaboradores, estagiários e prestadores de serviço.</p>
+          <p>III. Anonimização: processo de tratamento de dados pessoais por meio do qual a informação perde a possibilidade de associação, direta ou indireta, a uma pessoa natural, de modo irreversível, mesmo avec a utilização de informações adicionais pelo controlador, nos termos da LGPD.</p>
+          <p>IV. Complementação: no âmbito do Sistema de Ouvidoria da Administração Pública, é o ato por meio do qual o(a) usuário(a) é instado a fornecer informações ou documentos complementares necessários à adequada análise e tratamento de sua manifestação.</p>
+          <p>V. Descaracterização: técnica avançada de tratamento de informações sensíveis ou identificáveis, que consiste na remoção ou alteração de dados e elementos capazes de permitir a identificação do titular, sendo aplicável de forma ampla a textos, relatórios ou registros, podendo incluir anonimização e pseudonimização.</p>
+          <p>VI. Habilitação: procedimento preliminar de triagem realizado pela Ouvidoria, destinado à verificação dos requisitos mínimos de autoria, materialidade e relevância da denúncia, com vistas à sua admissibilidade e eventual encaminhamento à unidade de apuração competente.</p>
+          <p>VII. Manifestação: reclamação, denúncia, sugestão, elogio, solicitação ou qualquer outro pronunciamento do usuário que tenha por objeto a prestação de serviços públicos ou a conduta de agentes públicos, observado o disposto na Lei nº 13.460/2017 e no Decreto nº 9.492/2018.</p>
+          <p>VIII. Pseudonimização: técnica de tratamento de dados pessoais na qual os elementos identificadores diretos são substituídos por pseudônimos, de forma a dificultar a associação dos dados a um titular específico sem o uso de informações adicionais mantidas separadamente em ambiente seguro, conforme a LGPD.</p>
+          <p>IX. Serviço público: atividade administrativa ou de prestação direta ou indireta de bens ou serviços à população, exercida por órgão ou entidade integrante da administração pública, incluídos os conselhos profissionais dotados de poder de fiscalização e regulação.</p>
+          <p>X. Tarjamento: procedimento técnico de ocultação de dados pessoais ou sensíveis, por meio de tarja opaca e não reversível, garantindo a privacidade do titular das informações, especialmente em documentos públicos sujeitos a divulgação.</p>
+          <p>XI. Unidade de apuração: departamento, setor, comissão ou autoridade competente para realizar o juízo de admissibilidade e o tratamento das denúncias recebidas. Incluem-se como unidades de apuração: auditorias, corregedorias, comissões de ética, fiscalização e outras previstas na estrutura organizacional.</p>
+          <p>XII. Usuário: pessoa física ou jurídica que utiliza, incluindo o profissional de enfermagem, usufrui ou tem a expectativa de utilizar, de forma direta ou indireta, efetiva ou potencialmente, serviços públicos prestados pelo Conselho Federal ou pelos Conselhos Regionais de Enfermagem.</p>
+        </div>
+
+        <div class="chapter-content" id="capitulo2">
+          <h4>CAPÍTULO II - FUNÇÕES, ESTRUTURA DA OUVIDORIA</h4>
+          <p><strong>Art. 2º</strong> A Ouvidoria, como setor administrativo do Sistema Cofen/Conselhos Regionais de Enfermagem, atua como um canal de comunicação mediador entre os usuários e a autarquia. Sua principal função é garantir os direitos dos usuários, promover a participação social e contribuir para o aprimoramento da gestão pública na prestação de serviços.</p>
+          <p><strong>Art. 3º</strong> As Ouvidorias devem estar diretamente subordinadas à Presidência da respectiva Autarquia, sendo resguardada sua independência funcional no âmbito de suas atribuições.</p>
+          <p><strong>Art. 4º</strong> Para fins de registro, acompanhamento e resposta às manifestações, a Ouvidoria deverá assegurar canales de comunicação acessíveis, inclusivos e adequados às necessidades dos usuários, em conformidade com a Lei nº 13.460/2017.</p>
+          <p>§1º O Cofen e os Conselhos Regionais de Enfermagem deverão manter em seus sites oficiais um portal de Ouvidoria de fácil acesso. Este portal deve permitir ao usuário registrar, acompanhar e receber a resposta de suas manifestações, garantindo a proteção e a confidencialidade de seus dados pessoais.</p>
+          <p>§2º Caso seja disponibilizado atendimento presencial, as instalações devem possuir infraestrutura adequada, reservada e autônoma, visando garantir a privacidade do usuário e a confidencialidade das informações.</p>
+          <p><strong>Art. 5º</strong> Compete à Ouvidoria, em articulação com os setores administrativos, analisar e responder manifestações de forma clara, objetiva e fundamentada, observando os prazos e garantindo a conformidade com as legislações vigentes, especialmente a Lei Geral de Proteção de Dados (LGPD).</p>
+          <p>Parágrafo único. Poderão ser adotadas respostas padronizadas, previamente validadas, para demandas administrativas de natureza recorrente, a fim de assegurar uniformidade, agilidade e conformidade no atendimento.</p>
+          <p><strong>Art. 6º</strong> Não compete à Ouvidoria emitir juízo de valor, se pronunciar sobre matérias não regulamentadas ou atuar em substituição aos canales de atendimento e setores administrativos competentes do Sistema Cofen/Coren.</p>
+          <p>Parágrafo único. As manifestações que versarem sobre matérias não regulamentadas deverão ser encaminhadas aos setores técnicos competentes para análise e elaboração de resposta, a qual será submetida à apreciação e aprovação do Plenário do respectivo Conselho.</p>
+        </div>
+
+        <div class="chapter-content" id="capitulo3">
+          <h4>CAPÍTULO III - DAS COMPETÊNCIAS DA OUVIDORIA-GERAL E DAS OUVIDORIAS REGIONAIS</h4>
+          <p><strong>Art. 7º</strong> A Ouvidoria-Geral do Cofen e as Ouvidorias dos Conselhos Regionais deverão atuar de forma colaborativa e complementar, garantindo integração e cooperação mútua, com o objetivo de qualificar a gestão pública, ampliar a participação social e fortalecer o Sistema de Ouvidorias do Cofen/Conselhos Regionais de Enfermagem.</p>
+          <p><strong>Art. 8º</strong> São atribuições da Ouvidoria-Geral do Cofen:</p>
+          <p>I. Assegurar a plena execução das atribuições institucionais da Ouvidoria-Geral, em conformidade com o Manual.</p>
+          <p>II. Propor ao Plenário do Cofen medidas de aprimoramento contínuo dos fluxos, processos e procedimentos nos serviços de Ouvidoria do Sistema Cofen/Conselhos Regionais.</p>
+          <p>III. Promover a integração e a padronização de normas e rotinas entre as Ouvidorias Regionais.</p>
+          <p>IV. Representar institucionalmente a Ouvidoria-Geral do Cofen, inclusive junto a órgãos de controle.</p>
+          <p>V. Monitorar o cumprimento dos prazos de resposta às manifestações, zelando pelo seu andamento.</p>
+          <p>VI. Cumprir as atribuições previstas no Art. 9º deste Manual, de forma a assegurar a atuação integrada, complementar e cooperativa entre a Ouvidoria-Geral do Cofen e as Ouvidorias Regionais de Enfermagem.</p>
+          <p>VII. Acompanhar o desempenho das Ouvidorias Regionais, garantindo que as atividades e funções operacionais sejam executadas de forma eficiente e alinhada às diretrizes do Sistema.</p>
+          <p>VIII. Prestar apoio técnico e/ou realizar visitas e auditorias presenciais nas Ouvidorias Regionais, com o objetivo de avaliar fluxos e orientar sobre boas práticas.</p>
+          <p>IX. Promover capacitação técnica periódica das equipes das Ouvidorias Regionais, com foco na padronização de fluxos, no cumprimento de prazos e na qualificação das respostas.</p>
+          <p>X. Emitir relatórios analíticos à Presidência do Cofen, sempre que necessário ou solicitado.</p>
+          <p><strong>Art. 9º</strong> São atribuições das Ouvidorias dos Conselhos Regionais de Enfermagem:</p>
+          <p>I. Cumprir e fazer cumprir integralmente as disposições deste Manual, bem como as diretrizes e normativas emitidas pela Ouvidoria-Geral do Cofen.</p>
+          <p>II. Receber, registrar, qualificar e analisar as manifestações, realizando a triagem técnica e promovendo o devido encaminhamento às unidades competentes, com acompanhamento sistemático da tramitação.</p>
+          <p>III. Promover o acesso e a participação dos usuários na gestão pública e na defesa de seus direitos perante o Sistema Cofen/Conselhos Regionais de Enfermagem.</p>
+          <p>IV. Acompanhar o tratamento das manifestações em todas as suas fases, incluindo o cumprimento dos prazos legais e regimentais, e assegurar a qualidade e a efetividade das respostas.</p>
+          <p>V. Atuar de forma isenta, proativa e orientada à escuta qualificada, promovendo o fortalecimento da cidadania.</p>
+          <p>VI. Facilitar o acesso às informações institucionais e promover a transparência sobre os serviços prestados.</p>
+          <p>VII. Acompanhar a elaboração, atualização e implementação da Carta de Serviços ao Usuário no âmbito do Sistema.</p>
+          <p>VIII. Processar e analisar as informações obtidas por meio das manifestações e pesquisas de satisfação, subsidiando a melhoria contínua dos serviços.</p>
+          <p>IX. Emitir relatórios analíticos à presidência do respectivo Conselho, sempre que necessário ou solicitado.</p>
+        </div>
+
+        <div class="chapter-content" id="capitulo4">
+          <h4>CAPÍTULO IV - DO(A) OUVIDOR(A)</h4>
+          <p><strong>Art. 10º</strong> O(A) Ouvidor(a) é elo entre a sociedade e o Sistema Cofen/Conselhos Regionais de Enfermagem, responsável por liderar, coordenar e supervise as atividades da Ouvidoria. Sua principal atribuição é assegurar um canal de comunicação que seja eficiente, transparente e acessível.</p>
+          <p>I. Receber, analisar, orientar, encaminhar e responder a manifestações — incluindo denúncias, reclamações, sugestões, solicitações e outras — referentes aos serviços prestados pelo Sistema Cofen/Conselhos Regionais de Enfermagem.</p>
+          <p>II. Estimular a cultura da transparência e da responsabilidade institucional, fortalecendo a participação social e o controle social.</p>
+          <p>III. Acompanhar as Reuniões de Plenário para apresentar as tendências identificadas nas manifestações, auxiliando o Plenário a se manter atualizado sobre as percepções e necessidades da sociedade e dos profissionais de enfermagem.</p>
+          <p>IV. Informar ao Gabinete da Presidência sobre qualquer manifestação cujo prazo de resposta, previsto em lei, seja excedido pelo setor responsável.</p>
+          <p><strong>Art. 11º</strong> O(A) Ouvidor(a) deve zelar pela integridade e confiabilidade dos processos de escuta, análise e resposta, garantindo a conformidade com os princípios da Administração Pública. Ao(A) Ouvidor(a) e à sua equipe é exigido um comportamento ético, zeloso, transparente, sigiloso, íntegro e respeitoso.</p>
+          <p><strong>Art. 12º</strong> O(A) Ouvidor(a) será designado(a) pela Presidência do respectivo Conselho de Enfermagem.</p>
+          <p><strong>Art. 13º</strong> O cargo de Ouvidor(a) deverá ser exercido, preferencialmente, com dedicação exclusiva às atividades da Ouvidoria.</p>
+          <p>§1º Caso o(a) Ouvidor(a) exerça outras atividades na Autarquia, a segregação de funções deverá ser respeitada, a fim de evitar conflito com os objetivos da Ouvidoria.</p>
+          <p>§2º Em caso de afastamento legal do(a) Ouvidor(a), a substituição será realizada por agente público(a) designado(a) pela Presidência, garantindo a continuidade dos serviços.</p>
+          <p><strong>Art. 14º</strong> As competências para ocupar a função de Ouvidor(a) são: [...]</p>
+        </div>
+
+        <div class="chapter-content" id="capitulo5">
+          <h4>CAPÍTULO V - DAS MANIFESTAÇÕES</h4>
+          <p><strong>Art. 15º</strong> As manifestações recebidas pela Ouvidoria serão tratadas em fluxos e rotinas de trabalho padronizados. [...]</p>
+          <p><strong>Art. 16º</strong> As manifestações dirigidas à Ouvidoria deverão be registradas por meio de formulário eletrônico [...]</p>
+          <p><strong>Art. 17º</strong> As manifestações recebidas serão analisadas, classificadas e encaminhadas [...]</p>
+          <p><strong>Art. 18º</strong> As manifestações registradas no Sistema de Ouvidoria são classificadas por status [...]</p>
+          <p><strong>Art. 19º</strong> Todas as comunicações realizadas com os(as) usuários(as) deverão ser feitas de forma claro, concisa, em linguagem cidadã e inclusiva.</p>
+        </div>
+
+        <div class="chapter-content" id="capitulo6">
+          <h4>CAPÍTULO VI - DOS PRAZOS</h4>
+          <p><strong>Art. 20º</strong> A Ouvidoria terá um prazo de até 30 (trinta) dias corridos para apresentar uma resposta conclusiva às manifestações [...].</p>
+          <p><strong>Art. 21º</strong> Para a tramitação interna, a Ouvidoria realizará a análise preliminar [...]</p>
+          <p><strong>Art. 22º</strong> A solicitação de complementação de dados ao manifestante, quando necessária, deverá ser formalizada com a suspensão do prazo de resposta [...].</p>
+          <p><strong>Art. 23º</strong> Em caráter excepcional, quando o período de análise e deliberações ultrapassar o prazo máximo de 60 (sessenta) dias corridos [...].</p>
+        </div>
+
+        <div class="chapter-content" id="capitulo7">
+          <h4>CAPÍTULO VII - DO TRATAMENTO DAS DENÚNCIAS</h4>
+          <p><strong>Art. 24º</strong> O tratamento das denúncias observará os princípios da legalidade, impessoalidade, moralidade, publicidade, eficiência, proteção de dados pessoais e respeito à dignidade da pessoa humana.</p>
+          <p><strong>Art. 25º</strong> A Ouvidoria, em cumprimento ao seu papel institucional, realizará uma análise rigorosa e imparcial das denúncias recebidas. [...]</p>
+          <p><strong>Art. 26º</strong> As denúncias podem ser direcionadas a profissionais [...]</p>
+          <p><strong>Art. 27º</strong> Ao receber uma denúncia, a Ouvidoria realizará sua classificação [...]</p>
+          <p><strong>Art. 28º</strong> A resposta conclusiva à denúncia deverá informar [...]</p>
+          <p><strong>Art. 29º</strong> A Ouvidoria deverá resguardar, a todo momento, a proteção da identificação dos usuários denunciantes.</p>
+        </div>
+
+        <div class="chapter-content" id="capitulo8">
+          <h4>CAPÍTULO VIII - DA PROTEÇÃO DE DADOS PESSOAIS, PRIVACIDADE E SIGILO NAS OUVIDORIAS</h4>
+          <p><strong>Art. 30º</strong> As Ouvidorias do Sistema Cofen/Conselhos Regionais de Enfermagem observarão, de forma estrita, a Lei nº 13.709/2018 (LGPD), a Lei nº 12.527/2011 (LAI) e demais normativos aplicáveis, garantindo o equilíbrio entre a proteção de dados pessoais, a transparência e o direito à informação.</p>
+          <p><strong>Art. 31º</strong> Compete às Ouvidorias implementar medidas administrativas, organizacionais e tecnológicas para o tratamento seguro dos dados pessoais [...].</p>
+          <p><strong>Art. 32º</strong> A identidade do usuário será protegida [...]</p>
+          <p><strong>Art. 33º</strong> Para preservação do sigilo e da privacidade, poderão ser adotadas técnicas como tariamento, descaracterização, anonimização e pseudonimização.</p>
+          <p><strong>Art. 34º</strong> O encaminhamento de manifestações ou denúncias com dados pessoais deverá: [...]</p>
+          <p><strong>Art. 35º</strong> O tratamento de dados deverá restringir-se ao mínimo necessário [...]</p>
+          <p><strong>Art. 36º</strong> As Ouvidorias deverão: [...]</p>
+          <p><strong>Art. 37º</strong> O descumprimento deste capítulo será comunicado à Presidência [...]</p>
+        </div>
+
+        <div class="chapter-content" id="capitulo9">
+          <h4>CAPÍTULO IX - DOS RELATÓRIOS INTERNOS</h4>
+          <p><strong>Art. 38º</strong> O Ouvidor elaborará relatórios qualitativos e quantitativos trimestrais, com análises e indicadores sobre as manifestações recebidas.</p>
+          <p>Parágrafo único. O relatório de Ouvidoria deve indicar, ao menos: I. Número de manifestações no período; II. Principais assuntos; III. Quantidade de manifestações não finalizadas por situação; IV. Análise de pontos recorrentes, providências adotadas e soluções apresentadas.</p>
+        </div>
+
+        <div class="chapter-content" id="capitulo10">
+          <h4>CAPÍTULO X - DAS DISPOSIÇÕES GERAIS E FINAIS</h4>
+          <p><strong>Art. 39º</strong> Os procedimentos previstos neste Manual deverão ser executados em consonância com os princípios da legalidade, impessoalidade, moralidade, publicidade e eficiência, previstos no art. 37 da Constituição Federal.</p>
+        </div>
+
+        <!-- QUIZ – exemplo (texto branco + auto avanço) -->
+        <div class="block quiz" id="quiz-manual">
+          <h3><i class="fa-regular fa-circle-question"></i> Quiz Rápido</h3>
+          <div class="question">A LGPD é a Lei nº…</div>
+          <div class="answers">
+            <button>12.527/2011</button>
+            <button data-correct>13.709/2018</button>
+            <button>13.460/2017</button>
+            <button>7.498/1986</button>
+          </div>
+        </div>
+
+        <!-- Seções de estudo (acordeões) -->
+        <div class="block">
+          <h3 style="margin-bottom:6px"><i class="fas fa-project-diagram"></i> Fluxo das Manifestações</h3>
+          <div class="interactive-diagram">
+            <div class="flow-step" data-flow="registro">Registro</div>
+            <div class="flow-step" data-flow="triagem">Triagem</div>
+            <div class="flow-step" data-flow="complementacao">Complementação</div>
+            <div class="flow-step" data-flow="encaminhamento">Encaminhamento</div>
+            <div class="flow-step" data-flow="resposta">Resposta</div>
+            <div class="flow-step" data-flow="conclusao">Conclusão</div>
+          </div>
+          <div id="flow-info" class="highlight" style="display:none">
+            <h3 id="flow-title" style="margin:0 0 6px">Título</h3>
+            <p id="flow-description" style="margin:0">Descrição</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <h3><i class="fas fa-clock"></i> Prazos do Sistema</h3>
+          <div class="timeline">
+            <div class="timeline-item"><div class="timeline-content">
+              <h3>Prazo Total</h3>
+              <p><strong>30 dias corridos</strong> para resposta conclusiva a partir do registro, prorrogável por mais 30 dias em casos de maior complexidade (Art. 20º).</p>
+            </div></div>
+            <div class="timeline-item"><div class="timeline-content">
+              <h3>Análise Inicial</h3>
+              <p><strong>10 dias corridos</strong> para análise inicial, classificação e encaminhamento ao setor competente (Art. 21º, §1º).</p>
+            </div></div>
+            <div class="timeline-item"><div class="timeline-content">
+              <h3>Análise Administrativa</h3>
+              <p><strong>15 dias corridos</strong> para os setores administrativos analisarem e deliberarem sobre a demanda (Art. 21º, §2º).</p>
+            </div></div>
+            <div class="timeline-item"><div class="timeline-content">
+              <h3>Resposta Final</h3>
+              <p><strong>5 dias corridos</strong> para análise final e envio da resposta ao manifestante após recebimento do setor (Art. 21º, §3º).</p>
+            </div></div>
+            <div class="timeline-item"><div class="timeline-content">
+              <h3>Complementação de Dados</h3>
+              <p><strong>20 dias corridos</strong> para o manifestante complementar informações, prorrogáveis por mais 10 dias mediante justificativa (Art. 22º).</p>
+            </div></div>
+          </div>
+        </div>
+
+        <!-- Guias rápidos (Denúncias / LGPD / Funções / Ouvidor / Métodos) -->
+        <div class="block">
+          <h3><i class="fas fa-clipboard-check"></i> Requisitos para Denúncias</h3>
+          <div class="method-grid">
+            <div class="method-card"><h4>Elementos Probatórios</h4><p>Fotos, vídeos, documentos – Art. 25º, §1º, I.</p></div>
+            <div class="method-card"><h4>Testemunhas</h4><p>Nome, contato, relato – Art. 25º, §1º, II.</p></div>
+            <div class="method-card"><h4>Informações Complementares</h4><p>Data, local, detalhes – Art. 25º, §1º, III.</p></div>
+            <div class="method-card"><h4>Fundamento Ético-Legal</h4><p>Conforme Art. 27º, §2º.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h3><i class="fas fa-user-shield"></i> Proteção do Denunciante</h3>
+          <div class="method-grid">
+            <div class="method-card"><p>Identidade protegida mediante solicitação – Art. 32º.</p></div>
+            <div class="method-card"><p>Técnicas de anonimização/pseudonimização – Art. 33º.</p></div>
+            <div class="method-card"><p>Denúncias anônimas como comunicação – Art. 27º, §1º.</p></div>
+            <div class="method-card"><p>Vedação de retaliação – Art. 29º.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h3><i class="fas fa-lock"></i> LGPD – Medidas de Segurança</h3>
+          <div class="method-grid">
+            <div class="method-card"><p>Tariamento de documentos – Art. 33º.</p></div>
+            <div class="method-card"><p>Pseudonimização – Art. 34º, II.</p></div>
+            <div class="method-card"><p>Princípio do mínimo necessário – Art. 35º.</p></div>
+            <div class="method-card"><p>Mecanismos de auditoria – Art. 36º, IV.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h3><i class="fas fa-sitemap"></i> Funções & Estrutura da Ouvidoria</h3>
+          <div class="method-grid">
+            <div class="method-card"><p>Setor mediador – Art. 2º.</p></div>
+            <div class="method-card"><p>Subordinação à Presidência – Art. 3º.</p></div>
+            <div class="method-card"><p>Canais acessíveis – Art. 4º.</p></div>
+            <div class="method-card"><p>Infraestrutura reservada – Art. 4º, §2º.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h3><i class="fas fa-user-check"></i> Ouvidor(a) – Responsabilidades</h3>
+          <div class="method-grid">
+            <div class="method-card"><p>Liderar, coordenar e supervisionar – Art. 10º.</p></div>
+            <div class="method-card"><p>Ser elo sociedade–Sistema – Art. 10º.</p></div>
+            <div class="method-card"><p>Garantir canal eficiente – Art. 10º.</p></div>
+            <div class="method-card"><p>Informar extrapolação de prazos – Art. 10º, IV.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h3><i class="fas fa-tasks"></i> Métodos – DIA • JALECO • PROSA</h3>
+          <div class="method-grid">
+            <div class="method-card"><h4>Método DIA</h4><p>D: Denúncias • I: Informações • A: Acompanhamento.</p></div>
+            <div class="method-card"><h4>Método JALECO</h4><p>J: Judiciais; A: Assédio; L: Legislações; E: Éticas; C: Conselhos; O: Outros.</p></div>
+            <div class="method-card"><h4>Método PROSA</h4><p>P: Prazos • R: Rotina • O: Orientações • S: Solicitações/SEI • A: Assuntos Adm.</p></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ANEXOS ===================== -->
+  <section id="anexos" class="tabcontent">
+
+    <!-- ANEXO II -->
+    <article class="block" id="anexo2">
+      <h3>ANEXO II - FLUXO DE TRABALHO DA OUVIDORIA</h3>
+      <p>Este Anexo detalha o fluxo de trabalho padronizado da Ouvidoria, estabelecendo as rotinas administrativas e os métodos de gestão operacional e estratégica para o tratamento das manifestações. O fluxo é composto por três etapas, guiadas pelos métodos DIA, JALECO e PROSA.</p>
+
+      <div class="method-card">
+        <h4><i class="fas fa-calendar-day"></i> I. 1ª Etapa: Método DIA</h4>
+        <p>O Método DIA estabelece a macroestrutura do atendimento diário da Ouvidoria, uniformizando os trâmites internos para assegurar a conformidade com os princípios da eficiência, da legalidade e da boa-fé administrativa.</p>
+        <p>a. Denúncias: manifestações destinadas a relatar irregularidades, ilícitos ou violações éticas e legais no âmbito do Sistema Cofen/Conselhos Regionais de Enfermagem. Para fins de habilitação e classificação, deverão atender aos requisitos estabelecidos nos arts. 24º e 25º deste Manual.</p>
+        <p>b. Informações: Monitoramento contínuo das publicações de novos atos normativos e administrativos, a fim de assegurar que as informações prestadas aos profissionais e à sociedade sejam atualizadas, corretas e tecnicamente fundamentadas, promovendo a transparência e a conformidade legal, conforme a Lei nº 12.527/2011.</p>
+        <p>c. Acompanhamento das Manifestações: Monitoramento integral de todas as manifestações, do recebimento à conclusão. Este acompanhamento garante a responsabilidade, a transparência e o cumprimento dos prazos, fortalecendo a rastreabilidade e a credibilidade institucional.</p>
+      </div>
+
+      <div class="method-card">
+        <h4><i class="fas fa-user-md"></i> II. 2ª Etapa: Método JALECO</h4>
+        <p>O Método JALECO estabelece critérios para la priorização das denúncias, permitindo uma análise direcionada e um encaminhamento eficiente aos setores competentes, conforme a natureza jurídica e a matéria envolvida.</p>
+        <p>a. Judiciais/Jurídicas: Denúncias que envolvam questões judicializadas ou com potencial de judicialização, requerendo análise e atuação da assessoria jurídica.</p>
+        <p>b. Assédio/Discriminação/Agressão: Condutas de assédio moral/sexual e outras formas de agressão quando envolvam usuários e/ou agentes públicos. Poderão ser remetidas ao CPEAD ou ao Gabinete da Presidência, conforme o caso.</p>
+        <p>c. Legislações: Descumprimento de leis, decretos ou outras normas, com encaminhamento à fiscalização.</p>
+        <p>d. Éticas: Possíveis infrações ao Código de Ética – encaminhamento compulsório ao setor competente do Coren.</p>
+        <p>e. Conselhos e Conselheiros: Conduta de Conselhos ou Conselheiros – formalização e envio à Presidência do Cofen.</p>
+        <p>f. Outros Demandantes: Demais denúncias relevantes.</p>
+      </div>
+
+      <div class="method-card">
+        <h4><i class="fas fa-tasks"></i> III. 3ª Etapa: Método PROSA</h4>
+        <p>O Método PROSA orienta a gestão das manifestações, padronizando os procedimentos internos para análise técnica e encaminhamento, assegurando respostas eficientes e tempestivas.</p>
+        <p>a. Prazos – conforme Art. 21º.</p>
+        <p>b. Rotina – recebimento, registro, triagem, análise e encaminhamento.</p>
+        <p>c. Orientações/Outras Demandas – reclamações, sugestões, dúvidas.</p>
+        <p>d. Solicitações – pareceres, informações, processos SEI/PAD.</p>
+        <p>e. Assuntos Administrativos – anuidades, inscrições, registros, etc.</p>
+      </div>
+    </article>
+
+    <!-- ANEXO III -->
+    <article class="block" id="anexo3">
+      <h3>ANEXO III - ROTINA DIÁRIA DA OUVIDORIA</h3>
+      <div class="highlight" style="overflow:auto">
+        <table style="width:100%; border-collapse: collapse; min-width:720px">
+          <tr>
+            <th style="border:1px solid #1a3a6c; padding:8px; background:#0e1a33; color:#fff;">1ª Etapa</th>
+            <th style="border:1px solid #1a3a6c; padding:8px; background:#0e1a33; color:#fff;">Ações</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #1a3a6c; padding:8px; vertical-align:top;">Início do Expediente</td>
+            <td style="border:1px solid #1a3a6c; padding:8px;">
+              <p>- Acesso ao Sistema de Ouvidoria Cofen</p>
+              <p>- Aplicar o Método DIA (avaliar as manifestações)</p>
+              <p>1º. Denúncias: Verificar novas denúncias recebidas e classificar conforme o método JALECO.</p>
+              <p>2º. Informações: monitore novos atos normativos do Sistema Cofen/Coren e pautas sensíveis.</p>
+              <p>3º. Acompanhamento das Manifestações: dos Status, do trâmite e dos prazos das manifestações não finalizadas:</p>
+              <p>• A Distribuir • Tramitando • Encaminhadas • Respondidas</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #1a3a6c; padding:8px; vertical-align:top;">2º Etapa</td>
+            <td style="border:1px solid #1a3a6c; padding:8px;">
+              <p>- Aplicação do Método JALECO</p>
+              <p>- Classificar as denúncias por: Judiciais/Jurídicas; Assédio/Discriminação/Agressão; Legislações; Éticas; Conselhos/Conselheiros; Outros Demandantes.</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #1a3a6c; padding:8px; vertical-align:top;">3º Etapa</td>
+            <td style="border:1px solid #1a3a6c; padding:8px;">
+              <p>- Aplicação do Método PROSA</p>
+              <p>- Acompanhar as manifestações conforme: Prazos; Rotina; Orientações/Outras Demandas; Solicitações/SEI/PAD; Assuntos Administrativos.</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #1a3a6c; padding:8px; vertical-align:top;">Final do Expediente</td>
+            <td style="border:1px solid #1a3a6c; padding:8px;">
+              <p>- Checklist de encerramento:</p>
+              <p>1º Finalize todas as manifestações que estão respondidas.</p>
+              <p>2º Verifique novas demandas, especialmente as judicializadas ou sensíveis.</p>
+              <p>3º Se necessário, encaminhe ao Gabinete da Presidência.</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </article>
+
+    <!-- ANEXO IV -->
+    <article class="block" id="anexo4">
+      <h3>ANEXO IV - MODELOS DE DOCUMENTOS</h3>
+      <p>Este anexo contém a representação gráfica do fluxograma de atendimento das manifestações.</p>
+      <div style="text-align:center;margin:16px 0">
+        <img src="https://raw.githubusercontent.com/Ouvidora-Geral/fluxograma/b7da86e891dca7200adb3790b25e7963916f5579/fluxograma%20ouvidoria.jpg"
+             alt="Fluxograma Ouvidoria"
+             style="max-width:100%;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.35);border:1px solid rgba(212,175,55,.35)">
+      </div>
+      <div class="highlight">
+        <strong>Legenda do Fluxograma:</strong>
+        <ul>
+          <li>Retângulo: Processo ou atividade</li>
+          <li>Paralelepípedo: Documentos/Informações</li>
+          <li>Losango: Decisão</li>
+          <li>Elipse: Início/Término</li>
+          <li>Setas: Direção do fluxo</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ANEXO V -->
+    <article class="block" id="anexo5">
+      <h3>ANEXO V - STATUS DAS MANIFESTAÇÕES</h3>
+      <p>Este anexo detalha os status utilizados no acompanhamento das manifestações ao longo do fluxo de trabalho da Ouvidoria.</p>
+      <div class="status-grid">
+        <div class="status-card">
+          <h4>I. A DISTRIBUIR</h4>
+          <p>Manifestação registrada no sistema, ainda não analisada ou triada pela Ouvidoria.</p>
+          <p><strong>Prazo:</strong> 10 dias corridos para análise inicial (Art. 21º, §1º)</p>
+        </div>
+        <div class="status-card">
+          <h4>II. TRAMITANDO</h4>
+          <p>Manifestação que aguarda complementação de informações por parte do(a) usuário(a).</p>
+          <p><strong>Prazo:</strong> 20 dias corridos para resposta (Art. 22º)</p>
+        </div>
+        <div class="status-card">
+          <h4>III. ENCAMINHADA</h4>
+          <p>Manifestação enviada à área competente, aguardando resposta técnica ou administrativa.</p>
+          <p><strong>Prazo:</strong> 15 dias corridos para análise do setor (Art. 21º, §2º)</p>
+        </div>
+        <div class="status-card">
+          <h4>IV. RESPONDIDA</h4>
+          <p>Manifestação com resposta devidamente elaborada, pendente de envio formal.</p>
+          <p><strong>Prazo:</strong> 5 dias corridos para envio (Art. 21º, §3º)</p>
+        </div>
+        <div class="status-card">
+          <h4>V. CONCLUÍDA</h4>
+          <p>Manifestação finalizada no sistema. Pode ser reaberta se o processo interno permanecer em tramitação (Art. 18º, VI).</p>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- ===================== LEGISLAÇÕES ===================== -->
+  <section id="legislacoes" class="tabcontent">
+    <div class="block">
+      <h3 style="margin-top:0;display:flex;align-items:center;gap:10px"><i class="fas fa-gavel"></i> Legislação Relevante</h3>
+
+      <!-- ferramentas -->
+      <div id="leg-tools">
+        <input id="leg-search" type="search" placeholder="Buscar por título ou ano...">
+      </div>
+      <!-- índice -->
+      <nav id="leg-index" aria-label="Índice das legislações"></nav>
+
+      <div id="legislacao-content">
+
+        <!-- LEIS -->
+        <section class="leg-group" id="leg-leis">
+          <h3 class="leg-title">Leis <i class="fas fa-chevron-down"></i></h3>
+          <div class="leg-body collapsed">
+            <div class="legislation-item"><i class="fas fa-book"></i><div>
+              <h3><a target="_blank" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm">Lei nº 13.709/2018 (LGPD)</a></h3>
+              <p>Lei Geral de Proteção de Dados Pessoais.</p></div></div>
+            <div class="legislation-item"><i class="fas fa-book"></i><div>
+              <h3><a target="_blank" href="http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13460.htm">Lei nº 13.460/2017</a></h3>
+              <p>Direitos do usuário de serviços públicos.</p></div></div>
+            <div class="legislation-item"><i class="fas fa-book"></i><div>
+              <h3><a target="_blank" href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm">Lei nº 12.527/2011 (LAI)</a></h3>
+              <p>Lei de Acesso à Informação.</p></div></div>
+            <div class="legislation-item"><i class="fas fa-book"></i><div>
+              <h3><a target="_blank" href="https://www.cofen.gov.br/lei-n-749886-de-25-de-junho-de-1986/">Lei nº 7.498/1986</a></h3>
+              <p>Regulamenta o exercício da Enfermagem (atualizada pelas Leis 14.434/2022 e 14.602/2023).</p></div></div>
+            <div class="legislation-item"><i class="fas fa-book"></i><div>
+              <h3><a target="_blank" href="http://www.planalto.gov.br/ccivil_03/leis/l5905.htm">Lei nº 5.905/1973</a></h3>
+              <p>Cria os Conselhos Federal e Regionais de Enfermagem.</p></div></div>
+          </div>
+        </section>
+
+        <!-- DECRETOS -->
+        <section class="leg-group" id="leg-decretos">
+          <h3 class="leg-title">Decretos <i class="fas fa-chevron-down"></i></h3>
+          <div class="leg-body collapsed">
+            <div class="legislation-item"><i class="fas fa-book"></i><div>
+              <h3><a target="_blank" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/decreto/d9492.htm">Decreto nº 9.492/2018</a></h3>
+              <p>Regulamenta a Lei nº 13.460/2017 (Ouvidorias).</p></div></div>
+            <div class="legislation-item"><i class="fas fa-book"></i><div>
+              <h3><a target="_blank" href="https://www.cofen.gov.br/decreto-n-9440687/">Decreto nº 94.406/1987</a></h3>
+              <p>Regulamenta a Lei nº 7.498/1986 (exercício da Enfermagem).</p></div></div>
+          </div>
+        </section>
+
+        <!-- RESOLUÇÕES -->
+        <section class="leg-group" id="leg-resolucoes">
+          <h3 class="leg-title">Resoluções <i class="fas fa-chevron-down"></i></h3>
+          <div class="leg-body collapsed">
+
+            <!-- 2025 -->
+            <div class="leg-year" id="res-2025" data-year="2025">
+              <h4 class="leg-year-title">2025 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-788-de-21-de-agosto-de-2025/">Resolução Cofen nº 788/2025</a></h3>
+                  <p>Uso terapêutico de concentrados sanguíneos autólogos.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-787-de-21-de-agosto-de-2025/">Resolução Cofen nº 787/2025</a></h3>
+                  <p>Atuação da enfermagem em Lesões Cutâneas.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-786-de-07-de-agosto-de-2025/">Resolução Cofen nº 786/2025</a></h3>
+                  <p>Altera a Res. 737/2024 (Parto Domiciliar Planejado).</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-785-de-04-de-agosto-de-2025/">Resolução Cofen nº 785/2025</a></h3>
+                  <p>Transparência: convênios e instrumentos congêneres.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-no-784-de-30-de-julho-de-2025/">Resolução Cofen nº 784/2025</a></h3>
+                  <p>Prorroga vigência da Resolução nº 782/2025.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-no-782-de-02-de-julho-de-2025/">Resolução Cofen nº 782/2025</a></h3>
+                  <p>Procedimentos para ART e atribuições do RT.</p></div></div>
+              </div>
+            </div>
+
+            <!-- 2024 -->
+            <div class="leg-year" id="res-2024" data-year="2024">
+              <h4 class="leg-year-title">2024 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-no-736-de-17-de-janeiro-de-2024/">Resolução Cofen nº 736/2024</a></h3>
+                  <p>Implementação do Processo de Enfermagem.</p></div></div>
+              </div>
+            </div>
+
+            <!-- 2023 -->
+            <div class="leg-year" id="res-2023" data-year="2023">
+              <h4 class="leg-year-title">2023 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-723-2023/">Resolução Cofen nº 723/2023</a></h3>
+                  <p>Descompressão torácica por agulha no APH móvel.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-722-2023/">Resolução Cofen nº 722/2023</a></h3>
+                  <p>Critérios para atuação em áreas de risco/difícil acesso – APH.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-720-2023-alterada-pela-resolucao-cofen-n-721-2023/">Resolução Cofen nº 720/2023</a></h3>
+                  <p>Atuação do Enfermeiro em Auditoria (alterada pela 721/2023).</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-718-2023/">Resolução Cofen nº 718/2023</a></h3>
+                  <p>Diretrizes e medicações – SBV/Suporte Intermediário.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-721-2023/">Resolução Cofen nº 721/2023</a></h3>
+                  <p>Registro de Empresa.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-715-2023/">Resolução Cofen nº 715/2023</a></h3>
+                  <p>Atuação do Enfermeiro na Estética – altera 529/2016.</p></div></div>
+              </div>
+            </div>
+
+            <!-- 2022 -->
+            <div class="leg-year" id="res-2022" data-year="2022">
+              <h4 class="leg-year-title">2022 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-713-2022/">Resolução Cofen nº 713/2022</a></h3>
+                  <p>APH móvel – atualização de norma de atuação.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-709-2022/">Resolução Cofen nº 709/2022</a></h3>
+                  <p>Atuação em Hemoterapia.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-705-2022/">Resolução Cofen nº 705/2022</a></h3>
+                  <p>Traumato-ortopedia e imobilização.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-696-2022-alterada-pela-resolucao-cofen-n-707-2022-e-713-2023/">Resolução Cofen nº 696/2022</a></h3>
+                  <p>Saúde Digital – Telenfermagem (alterações: 707/2022, 713/2023).</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-688-2022-alterada-pela-resolucao-cofen-n-718-2023/">Resolução Cofen nº 688/2022</a></h3>
+                  <p>Diretrizes SBV e reconhecimento do Suporte Intermediário.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-710-2022/">Resolução Cofen nº 710/2022</a></h3>
+                  <p>Doação, captação e transplante – equipe de enfermagem.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-706-2022-prorrogada-pela-resolucao-cofen-n-714-2022-alterada-pela-resolucao-cofen-n-758-2024/">Resolução Cofen nº 706/2022</a></h3>
+                  <p>Código de Processo Ético (prorrogada/alterada).</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-698-2022-revogada-pela-resolucao-cofen-n-721-2023/">Resolução Cofen nº 698/2022</a></h3>
+                  <p>Organograma e cargos (revogada pela 721/2023).</p></div></div>
+              </div>
+            </div>
+
+            <!-- 2021 -->
+            <div class="leg-year" id="res-2021" data-year="2021">
+              <h4 class="leg-year-title">2021 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-660-2021/">Resolução Cofen nº 660/2021</a></h3>
+                  <p>Altera a Res. 656/2020 (APH aéreo).</p></div></div>
+              </div>
+            </div>
+
+            <!-- 2020 -->
+            <div class="leg-year" id="res-2020" data-year="2020">
+              <h4 class="leg-year-title">2020 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-626-2020/">Resolução Cofen nº 626/2020</a></h3>
+                  <p>Altera a Res. 529/2016 (Estética).</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-656-2020-alterada-pela-resolucao-cofen-n-660-2021/">Resolução Cofen nº 656/2020</a></h3>
+                  <p>APH aéreo – assistência direta/gerenciamento.</p></div></div>
+              </div>
+            </div>
+
+            <!-- 2018 -->
+            <div class="leg-year" id="res-2018" data-year="2018">
+              <h4 class="leg-year-title">2018 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-n-581-2018-alterada-pela-resolucao-cofen-n-625-2020-e-decisoes-cofen-ns-065-2021-20-2021-263-2023-e-264-2023/">Resolução Cofen nº 581/2018</a></h3>
+                  <p>Registro de títulos de pós-graduação e lista de especialidades.</p></div></div>
+              </div>
+            </div>
+
+            <!-- 2003 -->
+            <div class="leg-year" id="res-2003" data-year="2003">
+              <h4 class="leg-year-title">2003 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/resolucao-cofen-278-2003/">Resolução Cofen nº 278/2003</a></h3>
+                  <p>Sutura efetuada por Profissional de Enfermagem.</p></div></div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- PARECERES -->
+        <section class="leg-group" id="leg-pareceres">
+          <h3 class="leg-title">Pareceres <i class="fas fa-chevron-down"></i></h3>
+          <div class="leg-body collapsed">
+
+            <!-- 2025 -->
+            <div class="leg-year" data-year="2025" id="par-2025">
+              <h4 class="leg-year-title">2025 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-n-262025camaras-tecnicas-de-enfermagem/">Parecer nº 26/2025/CTE</a></h3>
+                  <p>Possibilidade de atuação do enfermeiro como anestesista – análise.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-n-282025camaras-tecnicas-de-enfermagem/">Parecer nº 28/2025/CTE</a></h3>
+                  <p>Analgesia na inserção de DIU – revisão de evidências.</p></div></div>
+              </div>
+            </div>
+
+            <!-- 2024 -->
+            <div class="leg-year" data-year="2024" id="par-2024">
+              <h4 class="leg-year-title">2024 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-no-16-2024-cofen-camtec-ctlnenf/">Parecer nº 16/2024</a></h3>
+                  <p>SESMT como programa de saúde e supervisão de TEs por enfermeiros.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-normativo-no-1-2024-cofen/">Parecer Normativo nº 1/2024</a></h3>
+                  <p>Parâmetros para planejamento da força de trabalho.</p></div></div>
+              </div>
+            </div>
+
+            <!-- 2023 -->
+            <div class="leg-year" data-year="2023" id="par-2023">
+              <h4 class="leg-year-title">2023 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-camara-tecnica-no-29-2023-ctep-cofen/">Parecer de Câmara Técnica nº 29/2023</a></h3>
+                  <p>Especialista em Estética com ênfase em Harmonização Facial.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-74-2023-plen-cofen/">Parecer de Conselheiro Federal nº 74/2023</a></h3>
+                  <p>Atuação do enfermeiro em Tricologia.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-camara-tecnica-no-6-2023-ctep-cofen/">Parecer de Câmara Técnica nº 6/2023</a></h3>
+                  <p>Pós “Estética Invasiva: Procedimentos não cirúrgicos”.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-camara-tecnica-no-13-2023-ctln-cofen/">Parecer de Câmara Técnica nº 13/2023</a></h3>
+                  <p>Estágio de pós-graduação em instituição distinta.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-70-2023-plen-cofen/">Parecer de Conselheiro Federal nº 70/2023</a></h3>
+                  <p>Nutrição parenteral domiciliar – capacitação de familiar.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-3-2023-proger-dpac-spc-cofen/">Parecer de Conselheiro Federal nº 3/2023</a></h3>
+                  <p>Prescrição de medicamentos por Enfermeiro.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-14-2023-ctep-cofen/">Parecer de Câmara Técnica nº 14/2023</a></h3>
+                  <p>Terapias Pró-Oxidativas e Ozonioterapia – lato sensu.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-no-76-2023-plen-cofen/">Parecer de Conselheiro Federal nº 76/2023</a></h3>
+                  <p>Transporte intra-hospitalar no pós-operatório imediato.</p></div></div>
+              </div>
+            </div>
+
+            <!-- 2022 -->
+            <div class="leg-year" data-year="2022" id="par-2022">
+              <h4 class="leg-year-title">2022 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-062-2022-ctep-cofen/">Parecer de Câmara Técnica nº 062/2022</a></h3>
+                  <p>Registro do título de especialista em Estética.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-conselheiro-federal-n-022-2022-cofen/">Parecer de Conselheiro Federal nº 022/2022</a></h3>
+                  <p>Capacitação do cuidador familiar leigo – aspiração traqueal.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0024-2022-ctep-cofen/">Parecer de Câmara Técnica nº 0024/2022</a></h3>
+                  <p>Panorama da educação técnica em enfermagem (EPTNME).</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-053-2022-ctep-cofen/">Parecer de Câmara Técnica nº 053/2022</a></h3>
+                  <p>Ozonioterapia – análise de títulos lato sensu.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0056-2022-ctln-ctas-cofen/">Parecer de Câmara Técnica nº 0056/2022</a></h3>
+                  <p>Auxiliar de Enfermagem em Hemodiálise.</p></div></div>
+              </div>
+            </div>
+
+            <!-- 2021 -->
+            <div class="leg-year" data-year="2021" id="par-2021">
+              <h4 class="leg-year-title">2021 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0094-2021-ctln-cofen/">Parecer de Câmara Técnica nº 0094/2021</a></h3>
+                  <p>Anestesia local injetável por enfermeiro especialista (podiatria/dermato/estomaterapia).</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0112-2021-ctln-dgep-cofen/">Parecer de Câmara Técnica nº 0112/2021</a></h3>
+                  <p>Dimensionamento de Pessoal no Home Care.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-camara-tecnica-n-0107-2021-ctln-dgep-cofen/">Parecer de Câmara Técnica nº 0107/2021</a></h3>
+                  <p>Coordenação do SCIH – atuação e capacitação do enfermeiro.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-de-conselheira-federal-n-333-2021-cofen/">Parecer de Conselheira Federal nº 333/2021</a></h3>
+                  <p>Competência para atuar em UTI.</p></div></div>
+              </div>
+            </div>
+
+            <!-- 2020 -->
+            <div class="leg-year" data-year="2020" id="par-2020">
+              <h4 class="leg-year-title">2020 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/parecer-normativo-n-001-2020-cofen/">Parecer Normativo nº 001/2020</a></h3>
+                  <p>Ozonoterapia como prática do enfermeiro no Brasil.</p></div></div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- DECISÕES -->
+        <section class="leg-group" id="leg-decisoes">
+          <h3 class="leg-title">Decisões <i class="fas fa-chevron-down"></i></h3>
+          <div class="leg-body collapsed">
+            <div class="leg-year" data-year="2023" id="dec-2023">
+              <h4 class="leg-year-title">2023 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/decisao-cofen-n-263-de-15-de-dezembro-de-2023/">Decisão Cofen nº 263/2023</a></h3>
+                  <p>Reconhece a Podiatria Clínica como especialidade do Enfermeiro.</p></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- NOTAS TÉCNICAS -->
+        <section class="leg-group" id="leg-notas">
+          <h3 class="leg-title">Notas Técnicas <i class="fas fa-chevron-down"></i></h3>
+          <div class="leg-body collapsed">
+
+            <div class="leg-year" data-year="2025" id="nt-2025">
+              <h4 class="leg-year-title">2025 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/nota-tecnica-no-4-2025-plenario/">Nota Técnica nº 4/2025</a></h3>
+                  <p>Esclarece a revogação da Resolução Cofen nº 280/2003.</p></div></div>
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/nota-tecnica-no-1-2025-plenario/">Nota Técnica nº 1/2025</a></h3>
+                  <p>Segurança do Paciente no APH móvel: ética, riscos e manejo seguro.</p></div></div>
+              </div>
+            </div>
+
+            <div class="leg-year" data-year="2024" id="nt-2024">
+              <h4 class="leg-year-title">2024 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/nota-tecnica-no-001-2024-comite-de-operacoes-de-emergencia-em-saude-coes-cofen/">Nota Técnica nº 001/2024 – COES/COFEN</a></h3>
+                  <p>Competências do enfermeiro no enfrentamento à epidemia de dengue.</p></div></div>
+              </div>
+            </div>
+
+            <div class="leg-year" data-year="2023" id="nt-2023">
+              <h4 class="leg-year-title">2023 <i class="fas fa-chevron-down"></i></h4>
+              <div class="leg-year-body collapsed">
+                <div class="legislation-item"><i class="fas fa-book"></i><div>
+                  <h3><a target="_blank" href="https://www.cofen.gov.br/nota-tecnica-cofen-no-001-2023/">Nota Técnica Cofen nº 001/2023</a></h3>
+                  <p>Práticas Avançadas de Enfermagem no Brasil – panorama e regulação.</p></div></div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2025 – Ouvidoria • Interface com design futurista e acessível.</footer>
+</div>
+
+<script>
+/* ================== Tabs ================== */
+document.querySelectorAll('.tabbtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tabbtn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tabcontent').forEach(s=>s.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+    // rola pro topo do conteúdo
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+
+/* ================== QUIZ ================== */
+function wireQuiz(block){
+  const answers = block.querySelectorAll('.answers button');
+  answers.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      // desabilita e marca
+      answers.forEach(b=>{
+        b.disabled = true;
+        const correct = b.hasAttribute('data-correct');
+        if (correct) b.classList.add('correct');
       });
-    });
+      if (!btn.hasAttribute('data-correct')) btn.classList.add('wrong');
 
-    /* Accordion genérico */
-    function toggleSection(key){
-      const el=document.getElementById(`${key}-content`);
-      if(!el) return;
-      el.classList.toggle('active');
-    }
+      // avança para o próximo quiz, se existir
+      setTimeout(()=>{
+        const quizzes = Array.from(document.querySelectorAll('.quiz'));
+        const idx = quizzes.indexOf(block);
+        if (idx>-1 && quizzes[idx+1]){
+          quizzes[idx+1].scrollIntoView({behavior:'smooth',block:'center'});
+        }
+      }, 900);
+    }, {once:false});
+  });
+}
+document.querySelectorAll('.quiz').forEach(wireQuiz);
 
-    /* Quiz simples com auto-avance e feedback */
-    const bank={
-      easy:[
-        {q:'Qual lei trata dos direitos do usuário dos serviços públicos?',opts:['Lei 13.709/2018','Lei 13.460/2017','Lei 12.527/2011','Lei 7.498/1986'],a:1},
-        {q:'A LGPD é a lei…',opts:['13.460/2017','12.527/2011','13.709/2018','5.905/1973'],a:2},
-      ],
-      medium:[
-        {q:'O Decreto 9.492/2018 regulamenta:',opts:['Lei 13.709','Lei 13.460','Lei 7.498','Lei 12.527'],a:1},
-        {q:'No Sistema Cofen/Coren, a Ouvidoria se subordina:',opts:['À Presidência','À Corregedoria','À CRU','Ao Jurídico'],a:0}
-      ],
-      hard:[
-        {q:'Pseudonimização significa:',opts:['Remover dados de forma irreversível','Mascarar identificadores mantendo reidentificação por chave','Ampliar acesso aos dados','Registrar o tratamento no SEI'],a:1}
-      ]
-    };
+/* ================== Fluxo interativo ================== */
+const flowCopy = {
+  registro:{
+    t:'Registro da Manifestação',
+    d:'Registro no sistema oficial: data, identificação do manifestante, tipo e descrição detalhada (Art. 16º, §4º).'
+  },
+  triagem:{
+    t:'Triagem',
+    d:'Habilitação e classificação pela Ouvidoria, com análise de autoria, materialidade e relevância (Arts. 24º e 27º).'
+  },
+  complementacao:{
+    t:'Complementação',
+    d:'Quando necessário, solicita-se ao usuário informações/documentos; prazo de 20 dias, prorrogável por 10 (Art. 22º).'
+  },
+  encaminhamento:{
+    t:'Encaminhamento',
+    d:'Envio ao setor competente para análise técnica/administrativa (Art. 21º, §2º).'
+  },
+  resposta:{
+    t:'Resposta',
+    d:'Elaboração e validação da resposta final, clara e fundamentada, observando a LGPD (Art. 5º).'
+  },
+  conclusao:{
+    t:'Conclusão',
+    d:'Envio formal ao manifestante e finalização no sistema (Art. 18º, VI).'
+  }
+};
+const info = document.getElementById('flow-info');
+const title = document.getElementById('flow-title');
+const desc = document.getElementById('flow-description');
+document.querySelectorAll('.flow-step').forEach(step=>{
+  step.addEventListener('click',()=>{
+    document.querySelectorAll('.flow-step').forEach(s=>s.classList.remove('active'));
+    step.classList.add('active');
+    const key = step.dataset.flow;
+    title.textContent = flowCopy[key].t;
+    desc.textContent  = flowCopy[key].d;
+    info.style.display = 'block';
+  });
+});
 
-    let level='easy', deck=[], idx=0, score=0, started=false, timer=null, secs=0;
+/* ================== Legislações – recolhido por padrão, índice e busca ================== */
+function toggleEl(el){ el.classList.toggle('collapsed'); }
 
-    const els={
-      quizIntro:document.querySelector('.quiz-intro'),
-      quizBox:document.querySelector('.quiz-container'),
-      results:document.querySelector('.results'),
-      levelBadge:document.getElementById('level-badge'),
-      timer:document.getElementById('timer'),
-      qpos:document.getElementById('qpos'),
-      progress:document.getElementById('progress'),
-      qtext:document.getElementById('question-text'),
-      options:document.getElementById('options'),
-      prev:document.getElementById('prev'),
-      next:document.getElementById('next'),
-      percent:document.getElementById('percent'),
-      stars:document.getElementById('stars'),
-      score:document.getElementById('score'),
-      restart:document.getElementById('restart')
-    };
+document.querySelectorAll('.leg-title').forEach(h=>{
+  const body = h.nextElementSibling;
+  h.addEventListener('click', ()=> toggleEl(body));
+});
+document.querySelectorAll('.leg-year-title').forEach(h=>{
+  const body = h.nextElementSibling;
+  h.addEventListener('click', ()=> toggleEl(body));
+});
 
-    document.querySelectorAll('.level-btn').forEach(b=>b.onclick=()=>start(b.dataset.level));
-    els.prev.onclick=()=>go(-1);
-    els.next.onclick=()=>go(1);
-    els.restart.onclick=()=>{showIntro()};
+// Índice dinâmico
+(function buildIndex(){
+  const idx = document.getElementById('leg-index');
+  const items = [
+    {label:'Leis', id:'leg-leis'},
+    {label:'Decretos', id:'leg-decretos'},
+    {label:'Resoluções 2025', id:'res-2025'},
+    {label:'2024', id:'res-2024'},
+    {label:'2023', id:'res-2023'},
+    {label:'2022', id:'res-2022'},
+    {label:'2021', id:'res-2021'},
+    {label:'2020', id:'res-2020'},
+    {label:'2018', id:'res-2018'},
+    {label:'2003', id:'res-2003'},
+    {label:'Pareceres', id:'leg-pareceres'},
+    {label:'Decisões', id:'leg-decisoes'},
+    {label:'Notas Técnicas', id:'leg-notas'}
+  ];
+  items.forEach(i=>{
+    const a = document.createElement('a');
+    a.href = '#'+i.id; a.textContent = i.label; a.className='chip';
+    idx.appendChild(a);
+  });
+})();
 
-    function showIntro(){
-      stopTimer();secs=0;els.timer.textContent='00:00';
-      els.quizIntro.style.display='block';
-      els.quizBox.style.display='none';
-      els.results.style.display='none';
-    }
-    function start(lv){
-      level=lv; deck=[...bank[lv]]; idx=0; score=0; started=true;
-      els.levelBadge.textContent=lv.toUpperCase();
-      els.quizIntro.style.display='none';
-      els.quizBox.style.display='block';
-      els.results.style.display='none';
-      els.prev.disabled=true; els.next.disabled=true;
-      updateProgress();
-      renderQ();
-      runTimer();
-    }
-    function renderQ(){
-      const item=deck[idx];
-      els.qtext.textContent=item.q;
-      els.options.innerHTML='';
-      item.opts.forEach((t,i)=>{
-        const div=document.createElement('div');
-        div.className='option';
-        div.textContent=t; // texto branco já no CSS
-        div.onclick=()=>select(i);
-        els.options.appendChild(div);
-      });
-      els.qpos.textContent=`${idx+1}/${deck.length}`;
-      els.prev.disabled = idx===0;
-      els.next.disabled = true;
-    }
-    function select(i){
-      const item=deck[idx], opts=[...document.querySelectorAll('.option')];
-      opts.forEach(o=>o.classList.add('disabled'));
-      if(i===item.a){
-        opts[i].classList.add('correct'); score++;
-      }else{
-        opts[i].classList.add('wrong'); opts[item.a].classList.add('correct');
-      }
-      els.next.disabled=false;
-      // auto-avança após 900ms
-      setTimeout(()=>go(1),900);
-      updateProgress();
-      if(idx===deck.length-1){ els.next.textContent='Finalizar'; } else { els.next.textContent='Próxima \u2192'; }
-    }
-    function go(dir){
-      if(dir>0 && idx===deck.length-1){ finish(); return; }
-      idx+=dir;
-      idx=Math.max(0,Math.min(idx,deck.length-1));
-      renderQ();
-    }
-    function finish(){
-      stopTimer();
-      els.quizBox.style.display='none';
-      els.results.style.display='block';
-      const pct=Math.round((score/deck.length)*100);
-      els.percent.textContent=pct+'%';
-      els.score.textContent=`${score}/${deck.length}`;
-      document.querySelector('.result-circle').style.setProperty('--percentage', pct+'%');
-      els.stars.textContent = pct>=90?'★★★★★':pct>=70?'★★★★☆':pct>=50?'★★★☆☆':'★★☆☆☆';
-    }
-    function updateProgress(){
-      const pct=((idx + (started?0:0))/deck.length)*100;
-      els.progress.style.width=pct+'%';
-    }
-    function runTimer(){
-      stopTimer();
-      timer=setInterval(()=>{secs++; els.timer.textContent=fmt(secs);},1000);
-    }
-    function stopTimer(){ if(timer){clearInterval(timer);timer=null;} }
-    function fmt(s){const m=String(Math.floor(s/60)).padStart(2,'0');const ss=String(s%60).padStart(2,'0');return `${m}:${ss}`;}
+// Busca instantânea (título ou ano)
+const search = document.getElementById('leg-search');
+search.addEventListener('input', ()=>{
+  const q = search.value.trim().toLowerCase();
+  // mostrar tudo para filtrar
+  document.querySelectorAll('.leg-body, .leg-year-body').forEach(b=>b.classList.remove('collapsed'));
 
-    /* PodeOuvir!: abas internas */
-    function openPodcastTab(id){
-      document.querySelectorAll('.podcast-tab-content').forEach(t=>t.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+  const entries = document.querySelectorAll('#legislacao-content .legislation-item');
+  let anyVisibleByGroup = new Map();
+
+  entries.forEach(it=>{
+    const title = it.querySelector('h3')?.innerText.toLowerCase() || '';
+    const inYear = it.closest('.leg-year')?.dataset.year || '';
+    const match = !q || title.includes(q) || inYear.includes(q);
+    it.style.display = match ? '' : 'none';
+    const group = it.closest('.leg-year') || it.closest('.leg-body');
+    if(match && group){
+      anyVisibleByGroup.set(group, true);
     }
-    // inicia padrão
-    openPodcastTab('episodio1');
-  </script>
+  });
+
+  // Oculta anos vazios durante a busca
+  document.querySelectorAll('.leg-year').forEach(y=>{
+    const body = y.querySelector('.leg-year-body');
+    const hasVisible = anyVisibleByGroup.has(y);
+    y.style.display = hasVisible || !q ? '' : 'none';
+    if(q){ body.classList.remove('collapsed'); }
+  });
+
+  // Se busca estiver vazia, recolhe tudo de novo
+  if(!q){
+    document.querySelectorAll('.leg-body, .leg-year-body').forEach(b=>b.classList.add('collapsed'));
+    document.querySelectorAll('.leg-year').forEach(y=>y.style.display='');
+  }
+});
+</script>
 </body>
 </html>
